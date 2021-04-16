@@ -1,26 +1,79 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useSelector, useDispatch} from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Container from './Components/styled/Container'
+import NavBar from './Components/NavBar'
+import {RootState} from './store'
+import Image from './Components/styled/Image'
+import {potato} from './assets'
+import Notifier from './Components/Notifier'
+import {toggleNotifier} from './store/notifier/action'
+import Snackbar from './Components/Snackbar'
+import SideMenu from './Components/SideMenu'
+
+
+
+const App: React.FC = () => {
+	const themeState = useSelector((state: RootState) => state.themeState)
+	const notifierState = useSelector((state: RootState) => state.notifierState)
+	const isSideMenuOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
+	const currentTheme = themeState.theme;
+	const dispatch = useDispatch()
+	return (
+		<Container
+			backgroundColor={
+				notifierState.isOpen ? themeState.isDark ? 'rgba(0,0,0,.8)'
+					: 'rgba(0,0,0,0.5)'
+					: currentTheme.background}
+			display='flex'
+			width='100vw'
+			height='100vh'
+			transition='background-color ease-in-out .2s'
+			position='relative'
+			justifyContent='flex-start'
+			onClick={
+				(e) => {
+					e.preventDefault()
+					if (notifierState.isOpen)
+						dispatch(toggleNotifier())
+				}
+			}
+		>
+			<SideMenu></SideMenu>
+			<Container
+				width={isSideMenuOpen ? 'calc(100%-230px)' : '100%'}
+				position='relative'
+				flexGrow={1}
+				display='flex'
+				flexDirection='column'
+			>
+				<NavBar />
+				<Container
+					flexGrow={1}
+					display='flex'
+					alignItems='center'
+					justifyContent='center'
+				>
+					<Image
+						width='600px'
+						height='600px'
+						backgroundImage={`url(${potato})`}
+						backgroundSize='contain'
+						filter={themeState.isDark ? 'invert(70%)' : ''}
+					/>
+				</Container>
+			</Container>
+			<Notifier
+				title='Email'
+				content='potatojoayo@gmail.com'
+				enableCopyContent={true}
+				borderRadius='15px'
+				boxShadow={'5px 5px 1px rgba(0,0,0,0.3)'}
+			/>
+			<Snackbar
+			/>
+		</Container>
+	)
 }
 
 export default App;
