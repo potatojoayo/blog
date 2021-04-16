@@ -4,8 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import Container from './Components/styled/Container'
 import NavBar from './Components/NavBar'
 import {RootState} from './store'
-import Image from './Components/styled/Image'
-import {potato} from './assets'
+import Pages from './Components/Pages'
 import Notifier from './Components/Notifier'
 import {toggleNotifier} from './store/notifier/action'
 import Snackbar from './Components/Snackbar'
@@ -30,6 +29,7 @@ const App: React.FC = () => {
 			height='100vh'
 			transition='background-color ease-in-out .2s'
 			position='relative'
+			overflow='hidden'
 			justifyContent='flex-start'
 			onClick={
 				(e) => {
@@ -48,20 +48,7 @@ const App: React.FC = () => {
 				flexDirection='column'
 			>
 				<NavBar />
-				<Container
-					flexGrow={1}
-					display='flex'
-					alignItems='center'
-					justifyContent='center'
-				>
-					<Image
-						width='600px'
-						height='600px'
-						backgroundImage={`url(${potato})`}
-						backgroundSize='contain'
-						filter={themeState.isDark ? 'invert(70%)' : ''}
-					/>
-				</Container>
+				<Pages />
 			</Container>
 			<Notifier
 				title='Email'

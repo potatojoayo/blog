@@ -33,7 +33,7 @@ const MenuItem: React.FC<MenuItemProps> =
 			margin='0 0 5px 0'
 		>
 			<Container
-				width='85%'
+				minWidth='200px'
 				height='40px'
 				display='flex'
 				flexDirection='row'

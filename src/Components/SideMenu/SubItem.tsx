@@ -37,6 +37,7 @@ const SubItem: React.FC<SubItemProps> = ({icon, name, iconColor}) => {
 			/>
 		</Container>
 		<Container
+			minWidth='150px'
 			margin='0 0 0 10px'
 			padding='0 10px'
 		>

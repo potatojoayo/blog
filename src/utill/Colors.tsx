@@ -5,7 +5,10 @@ enum COLORS {
 	DARK = '#333333',
 	BLACK = '#222222',
 	GRAY_DARKER = '#CCCCCC',
-	GRAY_BRIGHT = '#676767'
+	GRAY_BRIGHT = '#676767',
+	FRONT_END = '#ee6c4d',
+	BACK_END = '#457b9d',
+	ALGORITHM = '#e9c46a',
 }
 
 export default COLORS;

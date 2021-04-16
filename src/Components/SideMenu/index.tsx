@@ -2,8 +2,9 @@ import React from 'react'
 import {useSelector} from 'react-redux'
 import {RootState} from '../../store'
 import Container from '../styled/Container'
+import Colors from '../../utill/Colors'
 import Image from '../styled/Image'
-import {avatar} from '../../assets'
+import {avatar, i_study, i_works, i_article, i_backend, i_frontend, i_algorithm} from '../../assets'
 import Text from '../styled/Text'
 import MenuItem from './MenuItem'
 import SubItem from './SubItem'
@@ -56,36 +57,36 @@ const SideMenu: React.FC = () => {
 				boxShadow={`0px 1px 1.5px ${theme.text}`}
 			/>
 			<MenuItem
-				icon='fas fa-book '
+				icon={i_study}
 				name='STUDY'
 				index={0}
 				numChild={3}
 			>
 				<SubItem
+					icon={i_frontend}
 					name='front-end'
-					icon='fas fa-tablet-alt'
-					iconColor='#ee6c4d'
+					iconColor={Colors.FRONT_END}
 				/>
 				<SubItem
+					icon={i_backend}
 					name='back-end'
-					icon='fas fa-server'
-					iconColor='#457b9d'
+					iconColor={Colors.BACK_END}
 				/>
 				<SubItem
+					icon={i_algorithm}
 					name='algorithm'
-					icon='fas fa-network-wired '
-					iconColor='#e9c46a'
+					iconColor={Colors.ALGORITHM}
 				/>
 			</MenuItem>
 			<MenuItem
-				icon='far fa-newspaper'
+				icon={i_article}
 				name='ARTICLE'
 				index={1}
 				numChild={0}
 			>
 			</MenuItem>
 			<MenuItem
-				icon='far fa-palette'
+				icon={i_works}
 				name='WORKS'
 				index={2}
 				numChild={0}

@@ -8,6 +8,7 @@ interface IconProps {
 	color?: CSSObject['color'];
 	transform?: CSSObject['transform'];
 	transition?: CSSObject['transition'];
+	margin?: CSSObject['margin'];
 }
 
 const Icon = styled.i({
@@ -20,6 +21,7 @@ const Icon = styled.i({
 		color: props.color,
 		transform: props.transform,
 		transition: props.transition,
+		margin: props.margin,
 	}
 	)
 )
