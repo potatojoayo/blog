@@ -1,25 +1,63 @@
-import React from 'react'
+import React, {useRef, useEffect} from 'react'
+import {Switch, Route} from 'react-router-dom'
 
-import Container from '../styled/Container'
+import {Container} from '../styled'
 import LandingPage from './LandingPage'
 import PageLayout from './PageLayout'
-import {i_study, i_frontend} from '../../assets'
-import Colors from '../../utill/Colors'
+
 
 const Pages: React.FC = () => {
+	const element = useRef(HTMLDivElement.prototype)
+	useEffect(() => {
+		const wheelHandler: any = (e: WheelEvent) => {
+			const end = element.current.offsetHeight + 60 - window.innerHeight
+			if (window.scrollY >= end && e.deltaY > 0)
+				e.preventDefault()
+		}
+		window.addEventListener('mousewheel', wheelHandler);
+		return () => window.removeEventListener('mousewheel', wheelHandler);
+	}, [])
 	return <Container
+		ref={element}
 		width='100%'
 		display='flex'
 		flexDirection='column'
+		alignItems='center'
 	>
-		<PageLayout
-			icon={i_study}
-			subIcon={i_frontend}
-			title={'STUDY'}
-			subTitle={'front-end'}
-			subIconColor={Colors.FRONT_END}
-		/>
-		<LandingPage />
+		<Switch>
+			<Route path='/' exact >
+				<LandingPage />
+			</Route>
+			<Route path='/front-end'>
+				<PageLayout
+					title={'STUDY'}
+					subTitle={'front-end'}
+
+				/>
+			</Route>
+			<Route path='/back-end'>
+				<PageLayout
+					title={'STUDY'}
+					subTitle={'back-end'}
+				/>
+			</Route>
+			<Route path='/algorithm'>
+				<PageLayout
+					title={'STUDY'}
+					subTitle={'algorithm'}
+				/>
+			</Route>
+			<Route path='/article'>
+				<PageLayout
+					title={'ARTICLE'}
+				/>
+			</Route>
+			<Route path='/works'>
+				<PageLayout
+					title={'WORKS'}
+				/>
+			</Route>
+		</Switch>
 	</Container>
 }
 

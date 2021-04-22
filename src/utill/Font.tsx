@@ -3,7 +3,9 @@
 const Font = {
 	headline_normal: 'PT Sans',
 	normal: 'Ubuntu',
-	menu: 'Ubuntu'
+	menu: 'Ubuntu',
+	tag: 'Ubuntu',
+	default: 'ubuntu'
 }
 
 export const FontWeight = {

@@ -16,12 +16,12 @@ interface NotifyProps {
 
 const Notify = styled.div(
 	{
-		padding: '20px 15px',
+		padding: '15px 18px',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		position: 'absolute',
+		position: 'fixed',
 		left: '0',
 		right: '0',
 		top: '0',

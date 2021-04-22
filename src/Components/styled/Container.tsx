@@ -1,9 +1,11 @@
 import styled, {CSSObject} from '@emotion/styled'
 import {themeTransitionProp} from '../../utill/Theme'
+import mediaquery, {DISPLAY_SIZE} from '../../utill/media_query';
 
 
 interface ContainerProps {
 	backgroundColor?: CSSObject['backgroundColor'];
+	flexWrap?: CSSObject['flexWrap'];
 	width?: CSSObject['width'];
 	height?: CSSObject['height'];
 	fontFamily?: CSSObject['fontFamily'];
@@ -22,9 +24,11 @@ interface ContainerProps {
 	transition?: CSSObject['transition'];
 	zIndex?: CSSObject['zIndex'];
 	margin?: CSSObject['margin'];
+	active?: CSSObject[':active']
 	cursor?: CSSObject['cursor'];
 	borderRadius?: CSSObject['borderRadius'];
 	left?: CSSObject['left'];
+	right?: CSSObject['right'];
 	transform?: CSSObject['transform'];
 	minWidth?: CSSObject['minWidth'];
 	maxWidth?: CSSObject['maxWidth'];
@@ -32,6 +36,9 @@ interface ContainerProps {
 	minHeight?: CSSObject['minHeight'];
 	fontSize?: CSSObject['fontSize'];
 	maxHeight?: CSSObject['maxHeight'];
+	mobile?: CSSObject;
+	desktop?: CSSObject;
+	tablet?: CSSObject;
 }
 
 const Container = styled.div({
@@ -41,7 +48,9 @@ const Container = styled.div({
 }, (props: ContainerProps) => ({
 	backgroundColor: props.backgroundColor,
 	width: props.width,
+	'&:active': props.active,
 	height: props.height,
+	flexWrap: props.flexWrap,
 	fontFamily: props.fontFamily,
 	display: props.display,
 	flexDirection: props.flexDirection,
@@ -68,6 +77,10 @@ const Container = styled.div({
 	fontSize: props.fontSize,
 	maxHeight: props.maxHeight,
 	cursor: props.cursor,
+	[mediaquery[DISPLAY_SIZE.MOBILE]]: props.mobile,
+	[mediaquery[DISPLAY_SIZE.TABLET]]: props.tablet,
+	[mediaquery[DISPLAY_SIZE.DESKTOP]]: props.desktop,
+	right: props.right,
 })
 )
 

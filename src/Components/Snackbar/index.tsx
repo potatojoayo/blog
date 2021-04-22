@@ -1,9 +1,8 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import {RootState} from '../../store'
-import Container from '../styled/Container'
+import {Container, Text} from '../styled'
 import Font, {FontWeight} from '../../utill/Font'
-import Text from '../styled/Text'
 
 
 const Snackbar: React.FC = () => {
@@ -12,7 +11,7 @@ const Snackbar: React.FC = () => {
 	return <Container
 		width='100%'
 		height={snackbarState.isOpen ? '30px' : '0px'}
-		position='absolute'
+		position='fixed'
 		backgroundColor={themeState.theme.text}
 		bottom={0}
 		padding='0px 30px'

@@ -1,11 +1,8 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import {RootState} from '../../store'
-import Container from '../styled/Container'
-import Icon from '../styled/Icons'
-import Text from '../styled/Text'
+import {Container, Icon, Text, Button} from '../styled'
 import Font, {FontWeight} from '../../utill/Font'
-import Button from '../styled/Button'
 
 
 interface SubItemProps {
@@ -37,13 +34,14 @@ const SubItem: React.FC<SubItemProps> = ({icon, name, iconColor}) => {
 			/>
 		</Container>
 		<Container
-			minWidth='150px'
 			margin='0 0 0 10px'
 			padding='0 10px'
+			minWidth='150px'
 		>
-
 			<Text
 				cursor='pointer'
+				whiteSpace='nowrap'
+				width='fit-content'
 				color={theme.text}
 				fontFamily={Font.menu}
 				bottomLineColor={theme.text}

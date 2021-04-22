@@ -15,9 +15,9 @@ interface ImageProps {
 	margin?: CSSObject['margin'];
 	zIndex?: number;
 	boxShadow?: number;
-	mobile?: ImageProps;
-	desktop?: ImageProps;
-	tablet?: ImageProps;
+	mobile?: CSSObject;
+	desktop?: CSSObject;
+	tablet?: CSSObject;
 	backgroundSize?: string;
 	backgroundPosition?: string;
 	backgroundRepeat?: string;

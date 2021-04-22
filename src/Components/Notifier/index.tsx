@@ -4,12 +4,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '../../store'
 import {toggleNotifier} from '../../store/notifier/action'
 import {openSnackbar, closeSnackbar} from '../../store/snackbar/action'
-import Notify from '../styled/Notify'
-import Container from '../styled/Container'
+import {Container, Notify, Text, Button} from '../styled'
 import {CSSObject} from '@emotion/serialize'
-import Text from '../styled/Text'
 import {FontWeight} from '../../utill/Font'
-import Button from '../styled/Button'
 import Colors from '../../utill/Colors'
 
 
@@ -29,7 +26,7 @@ const Notifier: React.FC<NotiferProps> = ({width = '250px',
 	borderRadius = '15px',
 	boxShadow = '5px 5px 5px rgba(0,0,0,0.4)',
 	title,
-	fontFamily = 'PT Sans',
+	fontFamily = 'Ubuntu',
 	content,
 	enableCopyContent = false
 }) => {
@@ -65,11 +62,11 @@ const Notifier: React.FC<NotiferProps> = ({width = '250px',
 		}
 	>
 		<Container
-			width='90%'
+			width='100%'
 		>
 			<Text
 				fontFamily={fontFamily}
-				fontWeight={FontWeight.bold}
+				fontWeight={FontWeight.medium}
 				fontSize={23}
 				cursor='default'
 			>
@@ -77,7 +74,7 @@ const Notifier: React.FC<NotiferProps> = ({width = '250px',
 			</Text>
 		</Container>
 		<Button
-			width='90%'
+			width='100%'
 		>
 			<Text
 				textAlign='start'
@@ -98,7 +95,7 @@ const Notifier: React.FC<NotiferProps> = ({width = '250px',
 							dispatch(openSnackbar('Copied!'))
 							setTimeout(() => {
 								dispatch(closeSnackbar())
-							}, 2500)
+							}, 1500)
 						}
 					}
 				}

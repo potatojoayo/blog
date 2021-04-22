@@ -1,25 +1,29 @@
 import styled, {CSSObject} from '@emotion/styled'
 import {themeTransitionProp} from '../../utill/Theme'
+import mediaquery, {MediaQueryStyleProps, DISPLAY_SIZE} from '../../utill/media_query'
 
 
-interface ButtonProps {
+interface ButtonProps extends MediaQueryStyleProps {
 	boxShadow?: CSSObject['boxShadow'];
 	width?: CSSObject['width'];
 	height?: CSSObject['height'];
 	backgroundColor?: CSSObject['backgroundColor'];
 	color?: CSSObject['color'];
 	borderRadius?: CSSObject['borderRadius'];
+	right?: CSSObject['right'];
 	border?: CSSObject['border'];
 	textAlign?: CSSObject['textAlign'];
 	fontFamily?: CSSObject['fontFamily'];
 	fontSize?: CSSObject['fontSize'];
 	margin?: CSSObject['margin'];
 	justifySelf?: CSSObject['justifySelf'];
+	justifyContent?: CSSObject['justifyContent']
 	display?: CSSObject['display'];
 	flexDirection?: CSSObject['flexDirection'];
 	position?: CSSObject['position']
 	alignSelf?: CSSObject['alignSelf'];
 	alignItems?: CSSObject['alignItems']
+
 }
 
 const Button = styled.div(
@@ -34,6 +38,7 @@ const Button = styled.div(
 	},
 	(props: ButtonProps) => ({
 		boxShadow: props.boxShadow,
+		right: props.right,
 		width: props.width,
 		height: props.height,
 		backgroundColor: props.backgroundColor,
@@ -45,11 +50,15 @@ const Button = styled.div(
 		fontFamily: props.fontFamily,
 		fontSize: props.fontSize,
 		justifySelf: props.justifySelf,
+		justifyContent: props.justifyContent,
 		display: props.display,
 		flexDirection: props.flexDirection,
 		position: props.position,
 		alignSelf: props.alignSelf,
 		alignItems: props.alignItems,
+		[mediaquery[DISPLAY_SIZE.MOBILE]]: props.mobile,
+		[mediaquery[DISPLAY_SIZE.TABLET]]: props.tablet,
+		[mediaquery[DISPLAY_SIZE.DESKTOP]]: props.desktop,
 	})
 )
 

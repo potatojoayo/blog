@@ -2,9 +2,7 @@ import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {toggleMenuItem} from '../../store/sideMenu/action'
 import {RootState} from '../../store'
-import Container from '../styled/Container'
-import Icon from '../styled/Icons'
-import Text from '../styled/Text'
+import {Container, Icon, Text} from '../styled'
 import Font, {FontWeight} from '../../utill/Font'
 
 
@@ -26,6 +24,9 @@ const MenuItem: React.FC<MenuItemProps> =
 			width='100%'
 			cursor='pointer'
 			flexDirection='column'
+			active={{
+				transform: numChild > 0 ? '' : 'scale(.98)'
+			}}
 			alignItems='start'
 			overflow='hidden'
 			maxHeight={isMenuItemOpen ? `${(numChild + 1) * 40 + 15}px` : '40px'}
@@ -42,7 +43,6 @@ const MenuItem: React.FC<MenuItemProps> =
 				margin='0 0 0 20px'
 				onClick={
 					(e) => {
-						e.preventDefault()
 						if (numChild > 0)
 							dispatch(toggleMenuItem(index))
 					}
@@ -68,6 +68,7 @@ const MenuItem: React.FC<MenuItemProps> =
 						color={!isMenuItemOpen ? theme.text : theme.icon}
 						fontFamily={Font.menu}
 						cursor='pointer'
+						bottomLineColor={numChild > 0 ? '' : theme.text}
 						transition='color ease .3s'
 						fontWeight={FontWeight.medium}
 						fontSize={20}

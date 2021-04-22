@@ -11,4 +11,6 @@ enum COLORS {
 	ALGORITHM = '#e9c46a',
 }
 
+// #E0E0E0
+
 export default COLORS;

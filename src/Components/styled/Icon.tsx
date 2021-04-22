@@ -6,9 +6,11 @@ interface IconProps {
 	width?: CSSObject['width'];
 	height?: CSSObject['height'];
 	color?: CSSObject['color'];
+	visibility?: CSSObject['visibility'];
 	transform?: CSSObject['transform'];
 	transition?: CSSObject['transition'];
 	margin?: CSSObject['margin'];
+	cursor?: CSSObject['cursor']
 }
 
 const Icon = styled.i({
@@ -22,6 +24,8 @@ const Icon = styled.i({
 		transform: props.transform,
 		transition: props.transition,
 		margin: props.margin,
+		visibility: props.visibility,
+		cursor: props.cursor,
 	}
 	)
 )
