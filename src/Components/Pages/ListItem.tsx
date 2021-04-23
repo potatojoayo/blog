@@ -15,8 +15,6 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({post}) => {
 	const themeState = useSelector((state: RootState) => state.themeState)
-	const isNotifierOpen = useSelector((state: RootState) => state.notifierState).isOpen
-	const isSideMenuOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
 	const theme = themeState.theme
 	const match = useRouteMatch()
 	return <Container
@@ -37,11 +35,6 @@ const ListItem: React.FC<ListItemProps> = ({post}) => {
 					backgroundImage={`url(${post.repImage})`}
 					backgroundPosition='center'
 					backgroundSize='cover'
-					filter={isNotifierOpen ? 'brightness(70%)' : 'brightness(100%)'}
-					mobile={{
-						filter: `${isNotifierOpen || isSideMenuOpen ? 'brightness(70%)' : 'brightness(100%)'}`
-					}}
-					transition='filter ease .2s'
 					tablet={{
 						width: '100%',
 					}}
@@ -59,6 +52,8 @@ const ListItem: React.FC<ListItemProps> = ({post}) => {
 			<Container
 				maxHeight='100px'
 				overflow='hidden'
+				display='flex'
+				alignItems='flex-end'
 			>
 				<Button
 					width='fit-content'
@@ -76,6 +71,14 @@ const ListItem: React.FC<ListItemProps> = ({post}) => {
 						</Text>
 					</Link>
 				</Button>
+				<Text
+					color={theme.tag}
+					margin='0 0 9px 15px'
+					userSelect='text'
+					cursor='text'
+					fontSize={15}
+					display='inline-block'
+				> {'no. ' + post.id} </Text>
 			</Container>
 			<Container
 				maxHeight='100px'
@@ -103,7 +106,7 @@ const ListItem: React.FC<ListItemProps> = ({post}) => {
 								borderBottom={`0.15rem solid ${theme.tag}`}
 								margin='0 0 0 10px'
 							>
-								more..
+								More..
 					</Text>
 						</Link>
 					</Button>

@@ -195,21 +195,21 @@ const SideMenu: React.FC = () => {
 				index={0}
 				numChild={3}
 			>
-				<Link to='/front-end' style={{textDecoration: 'none'}} replace>
+				<Link to='/front-end?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_frontend}
 						name='front-end'
 						iconColor={Colors.FRONT_END}
 					/>
 				</Link>
-				<Link to='/back-end' style={{textDecoration: 'none'}} replace>
+				<Link to='/back-end?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_backend}
 						name='back-end'
 						iconColor={Colors.BACK_END}
 					/>
 				</Link>
-				<Link to='/algorithm' style={{textDecoration: 'none'}} replace>
+				<Link to='/algorithm?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_algorithm}
 						name='algorithm'
@@ -217,7 +217,7 @@ const SideMenu: React.FC = () => {
 					/>
 				</Link>
 			</MenuItem>
-			<Link to='/article' style={{textDecoration: 'none', width: '100%'}} replace>
+			<Link to='/article?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
 				<MenuItem
 					icon={i_article}
 					name='ARTICLE'
@@ -225,7 +225,7 @@ const SideMenu: React.FC = () => {
 					numChild={0}
 				/>
 			</Link>
-			<Link to='/works' style={{textDecoration: 'none', width: '100%'}} replace>
+			<Link to='/works?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
 				<MenuItem
 					icon={i_works}
 					name='WORKS'

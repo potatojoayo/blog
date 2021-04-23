@@ -32,7 +32,6 @@ const Pages: React.FC = () => {
 				<PageLayout
 					title={'STUDY'}
 					subTitle={'front-end'}
-
 				/>
 			</Route>
 			<Route path='/back-end'>

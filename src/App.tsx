@@ -30,8 +30,9 @@ const App: React.FC = () => {
 	const windowSize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	useEffect(() => {
 
-		// *** TODO:
-		dispatch(pushPosts([test, test2], Category.frontEnd))
+		dispatch(pushPosts([test, test2, test, test2, test, test2, test, test2], Category.frontEnd))
+
+
 		const wheelHandler: any = (e: WheelEvent) => {
 			if ((window.scrollY <= 0 && e.deltaY < 0))
 				e.preventDefault()
@@ -48,7 +49,7 @@ const App: React.FC = () => {
 		}
 		windowSizeHandler()
 		window.addEventListener('resize', windowSizeHandler);
-		window.addEventListener('mousewheel', wheelHandler)
+		window.addEventListener('mousewheel', wheelHandler, {passive: false})
 		return () => {
 			window.removeEventListener('resize', windowSizeHandler)
 			window.removeEventListener('mousewheel', wheelHandler)

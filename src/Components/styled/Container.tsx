@@ -6,6 +6,7 @@ import mediaquery, {DISPLAY_SIZE} from '../../utill/media_query';
 interface ContainerProps {
 	backgroundColor?: CSSObject['backgroundColor'];
 	flexWrap?: CSSObject['flexWrap'];
+	alignSelf?: CSSObject['alignSelf'];
 	width?: CSSObject['width'];
 	height?: CSSObject['height'];
 	fontFamily?: CSSObject['fontFamily'];
@@ -81,6 +82,7 @@ const Container = styled.div({
 	[mediaquery[DISPLAY_SIZE.TABLET]]: props.tablet,
 	[mediaquery[DISPLAY_SIZE.DESKTOP]]: props.desktop,
 	right: props.right,
+	alignSelf: props.alignSelf,
 })
 )
 

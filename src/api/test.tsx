@@ -1,5 +1,15 @@
 import {Post} from '../Model'
 
+export const test3: Post = {
+	id: 3,
+	title: '',
+	subTitle: '',
+	date: new Date(),
+	repImage: 'https://source.unsplash.com/random',
+	tags: [''],
+	content: ''
+}
+
 export const test: Post = {
 	id: 1,
 	title: 'TEST',
