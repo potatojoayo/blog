@@ -37,7 +37,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 			padding='20px 30px'
 		>
 			<Switch>
-				<Route path={`/:category`} >
+				<Route path={`/:category`} exact >
 					<List
 						title={title}
 						subTitle={subTitle!}

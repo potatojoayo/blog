@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
+import smoothscroll from 'smoothscroll-polyfill'
 
 //TODO: API
 import {test, test2} from './api/test'
@@ -29,7 +30,9 @@ const App: React.FC = () => {
 	const dispatch = useDispatch()
 	const windowSize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	useEffect(() => {
-
+		smoothscroll.polyfill()
+	}, [])
+	useEffect(() => {
 		dispatch(pushPosts([test, test2, test, test2, test, test2, test, test2], Category.frontEnd))
 
 

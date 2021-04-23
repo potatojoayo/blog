@@ -25,11 +25,8 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 	const currentPage = +query.get('page')!
 	const {category} = useParams<Parameter>()
 	const items: Post[] = useSelector((state: RootState) => state.postState)[category]
-	const filteredItems = items.filter((_: Post, index: number) =>
-		index >= (currentPage - 1) * 5 && index < currentPage * 5
-	)
-	const renderedItems = filteredItems.map((post) => {
-		return <ListItem post={post} key={post.id} />
+	const renderedItems = items.map((post, index) => {
+		return <ListItem post={post} key={post.id} isVisible={Math.floor(index / 5) === currentPage - 1} />
 	})
 	const listElement = useRef(HTMLDivElement.prototype);
 

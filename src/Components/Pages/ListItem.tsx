@@ -11,15 +11,16 @@ import Font, {FontWeight} from '../../utill/Font'
 
 interface ListItemProps {
 	post: Post
+	isVisible: boolean
 }
 
-const ListItem: React.FC<ListItemProps> = ({post}) => {
+const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 	const themeState = useSelector((state: RootState) => state.themeState)
 	const theme = themeState.theme
 	const match = useRouteMatch()
 	return <Container
 		width='100%'
-		display='flex'
+		display={isVisible ? 'flex' : 'none'}
 		margin='10px 0 20px 0'
 		tablet={{
 			flexDirection: 'column'
