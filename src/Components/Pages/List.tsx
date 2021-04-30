@@ -15,21 +15,30 @@ import {Post} from '../../Model'
 interface ListProps {
 	title: string;
 	subTitle: string;
-	theme: ThemeType
+	theme: ThemeType;
 }
 
 const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
-
+	const listElement = useRef(HTMLDivElement.prototype);
+	let currentPage: number = -1;
+	let items: Post[] = [];
+	const {category, tag} = useParams<Parameter>()
 	const useQuery = () => new URLSearchParams(useLocation().search)
 	const query = useQuery()
-	const currentPage = +query.get('page')!
-	const {category} = useParams<Parameter>()
-	const items: Post[] = useSelector((state: RootState) => state.postState)[category]
+	const postState = useSelector((state: RootState) => state.postState)
+	if (!tag) {
+		currentPage = +query.get('page')!
+		items = postState.post.filter((post) => post.category === category)
+	} else {
+		postState.post.forEach((post) => {
+			if (post.tags.includes(tag))
+				return items.push(post)
+		})
+	}
 	const renderedItems = items.map((post, index) => {
-		return <ListItem post={post} key={post.id} isVisible={Math.floor(index / 5) === currentPage - 1} />
+		console.log(post)
+		return <ListItem post={post} key={index} isVisible={true} />
 	})
-	const listElement = useRef(HTMLDivElement.prototype);
-
 	return <Container
 		ref={listElement}
 		width='100%'
@@ -50,20 +59,25 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					display='flex'
 					flexDirection='column'
 				>
-					<Button>
-						<Text
-							fontFamily={Font.menu}
-							cursor='pointer'
-							fontWeight={FontWeight.medium}
-							fontSize={35}
-							mobile={{
-								fontSize: 30
-							}}
-							color={theme.text}
-						>
-							{title}
-						</Text>
-					</Button>
+					{tag ?
+						<Text color={theme.tag} fontSize={30} fontFamily='Ubuntu' >
+							{'# ' + tag}
+						</Text> :
+						<Button>
+							<Text
+								fontFamily={Font.menu}
+								cursor='pointer'
+								fontWeight={FontWeight.medium}
+								fontSize={35}
+								mobile={{
+									fontSize: 30
+								}}
+								color={theme.text}
+							>
+								{title}
+							</Text>
+						</Button>
+					}
 					{subTitle ?
 						<Button>
 							<Text
@@ -86,11 +100,22 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					display='flex'
 					alignItems='flex-end'
 				>
+					{currentPage >= 0 ?
+						<Text
+							color={theme.text}
+							fontFamily={Font.tag}
+							cursor='default'
+							userSelect='none'
+						>{'page: ' + currentPage}</Text>
+						: <div />
+					}
 					<Text
-						color={theme.tag}
+						color={theme.text}
+						cursor='default'
 						fontFamily={Font.tag}
-						userSelect='text'
-					>{'Total: ' + items.length}</Text>
+						margin='0 0 0 10px'
+						userSelect='none'
+					>{'total posts: ' + items.length}</Text>
 				</Container>
 			</Container>
 		</Container>

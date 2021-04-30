@@ -2,7 +2,7 @@ import {ThemeAction} from './action'
 import ThemeActionType from './action_type'
 import Theme, {ThemeType} from '../../utill/Theme'
 
-interface ThemeState {
+export interface ThemeState {
 	theme: ThemeType;
 	isDark: boolean
 }

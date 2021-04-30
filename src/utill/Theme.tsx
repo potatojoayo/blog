@@ -6,6 +6,7 @@ export interface ThemeType {
 	text: string;
 	icon: string;
 	tag: string;
+	tagList: string[]
 }
 interface Themes {
 	light: ThemeType;
@@ -17,7 +18,8 @@ const LightTheme: ThemeType = {
 	mildBackground: Colors.GRAY,
 	text: Colors.BLACK,
 	icon: Colors.GRAY_BRIGHT,
-	tag: Colors.BACK_END
+	tag: Colors.BACK_END,
+	tagList: [Colors.FRONT_END, Colors.BACK_END, Colors.HONEY_YELLOW, Colors.PERSIAN_GREEN, Colors.TAG_GREEN]
 }
 
 const DarkTheme: ThemeType = {
@@ -25,7 +27,8 @@ const DarkTheme: ThemeType = {
 	text: Colors.GRAY_DARKER,
 	mildBackground: Colors.DARK,
 	icon: Colors.GRAY_BRIGHT,
-	tag: Colors.BACK_END
+	tag: Colors.BACK_END,
+	tagList: [Colors.FRONT_END, Colors.BACK_END, Colors.HONEY_YELLOW, Colors.PERSIAN_GREEN, Colors.TAG_GREEN]
 }
 
 const Theme: Themes = {

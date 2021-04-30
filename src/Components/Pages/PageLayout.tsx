@@ -3,10 +3,12 @@ import {Route, Switch} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
 
+import TagList from './TagList'
 import {RootState} from '../../store'
 import Post from './Post'
 import {Container} from '../styled'
 import List from './List'
+import WritePost from './WritePost'
 
 
 interface PageLayoutProps {
@@ -25,8 +27,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 		width='100%'
 		display='flex'
 		justifyContent='center'
-		height='fit-content'
-		minHeight='100vh'
+		minHeight='94vh'
 		transition='background-color ease .2s'
 	>
 		<Container
@@ -37,6 +38,16 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 			padding='20px 30px'
 		>
 			<Switch>
+				<Route path={`/tags`} exact>
+					<TagList />
+				</Route >
+				<Route path={`/tags/:tag`}  >
+					<List
+						title={title}
+						subTitle={subTitle!}
+						theme={theme}
+					/>
+				</Route>
 				<Route path={`/:category`} exact >
 					<List
 						title={title}
@@ -47,6 +58,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 				<Route path={`/:category/:postId`}>
 					<Post />
 				</Route >
+				<Route path={'/write'}>
+					<WritePost />
+				</Route>
 			</Switch>
 		</Container>
 	</Container>

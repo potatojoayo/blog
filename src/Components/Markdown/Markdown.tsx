@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import darkCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/pojoaque'
 import lightCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/nord'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import footnotes from 'remark-footnotes'
 import gfm from 'remark-gfm'
 import toc from 'remark-toc'
 import {Container} from '../styled'
@@ -73,7 +74,7 @@ const Markdown: React.FC<MarkdownProp> = ({value}) => {
 		<ReactMarkdown
 			className={isDark ? 'markdown-body-dark' : 'markdown-body'}
 			children={value}
-			remarkPlugins={[gfm, toc]}
+			remarkPlugins={[gfm, toc, footnotes]}
 			components={
 				{
 					a: MarkdownLinkRenderer,

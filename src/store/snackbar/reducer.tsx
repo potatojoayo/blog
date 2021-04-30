@@ -1,7 +1,7 @@
 import SNACKBAR_ACTION_TYPE from './action_type'
 import {SnackbarAction} from './action'
 
-interface SnackbarState {
+export interface SnackbarState {
 	isOpen: boolean;
 	content: string;
 }

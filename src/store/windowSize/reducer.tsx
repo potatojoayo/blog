@@ -2,7 +2,7 @@ import WINDOW_SIZE_ACTION_TYPE from './action_type'
 import {WindowSizeAction} from './action'
 import {DISPLAY_SIZE} from '../../utill/media_query'
 
-interface WindowSizeState {
+export interface WindowSizeState {
 	displaySize: DISPLAY_SIZE
 }
 

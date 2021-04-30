@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
-import smoothscroll from 'smoothscroll-polyfill'
 
 //TODO: API
-import {test, test2} from './api/test'
+import {getAllPosts} from './api'
 
+import {PostType} from './Model/Post'
 import './utill/app.css'
 import {pushPosts} from './store/post/action'
 import Container from './Components/styled/Container'
@@ -19,23 +19,27 @@ import SideMenu from './Components/SideMenu'
 import {setWindowSize} from './store/windowSize/action'
 import {breakpoints, DISPLAY_SIZE} from './utill/media_query';
 import {toggleSideMenu} from './store/sideMenu/action';
-import {Category} from './global';
 import {CSSObject} from '@emotion/serialize';
+import {AxiosResponse} from 'axios';
 
 
 const App: React.FC = () => {
 	const notifierState = useSelector((state: RootState) => state.notifierState)
 	const isSideMenuOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
-	const theme = useSelector((state: RootState) => state.themeState).theme
+	const posts = useSelector((state: RootState) => state.postState).post
+	const themeState = useSelector((state: RootState) => state.themeState)
+	const theme = themeState.theme
+	const isDark = themeState.isDark
 	const dispatch = useDispatch()
 	const windowSize = useSelector((state: RootState) => state.windowSizeState).displaySize
+	document.body.className = isDark ? 'dark-body' : 'light-body'
 	useEffect(() => {
-		smoothscroll.polyfill()
-	}, [])
+		if (posts?.length === 0)
+			getAllPosts().then((res: AxiosResponse<PostType[]>) => {
+				dispatch(pushPosts(res.data))
+			})
+	}, [dispatch, posts?.length])
 	useEffect(() => {
-		dispatch(pushPosts([test, test2, test, test2, test, test2, test, test2], Category.frontEnd))
-
-
 		const wheelHandler: any = (e: WheelEvent) => {
 			if ((window.scrollY <= 0 && e.deltaY < 0))
 				e.preventDefault()

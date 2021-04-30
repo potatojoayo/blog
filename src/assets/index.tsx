@@ -10,7 +10,7 @@ const i_backend = 'fas fa-server'
 const i_algorithm = 'fas fa-network-wired '
 const i_study = 'fas fa-book '
 const i_article = 'far fa-newspaper'
-const i_works = 'far fa-palette '
+const i_works = 'fas fa-palette'
 const i_tag = 'fas fa-tags'
 const i_chevron_left = 'fas fa-chevron-left'
 

@@ -24,6 +24,7 @@ const PageIndex: React.FC<PageIndexProp> = ({items, theme}) => {
 	}
 	const renderedIndex = indexes.map((i) => {
 		return <Container
+			key={i}
 			display='flex'>
 			{i === currentIndex ?
 				<Text

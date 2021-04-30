@@ -7,6 +7,7 @@ interface ButtonProps extends MediaQueryStyleProps {
 	boxShadow?: CSSObject['boxShadow'];
 	width?: CSSObject['width'];
 	height?: CSSObject['height'];
+	padding?: CSSObject['padding']
 	backgroundColor?: CSSObject['backgroundColor'];
 	color?: CSSObject['color'];
 	borderRadius?: CSSObject['borderRadius'];
@@ -56,6 +57,7 @@ const Button = styled.div(
 		position: props.position,
 		alignSelf: props.alignSelf,
 		alignItems: props.alignItems,
+		padding: props.padding,
 		[mediaquery[DISPLAY_SIZE.MOBILE]]: props.mobile,
 		[mediaquery[DISPLAY_SIZE.TABLET]]: props.tablet,
 		[mediaquery[DISPLAY_SIZE.DESKTOP]]: props.desktop,

@@ -18,6 +18,7 @@ const SubItem: React.FC<SubItemProps> = ({icon, name, iconColor}) => {
 		height='40px'
 		display='flex'
 		flexDirection='row'
+		onClick={() => {window.scrollTo({top: 0})}}
 		alignItems='center'
 		margin='0 0 0 40px'
 	>

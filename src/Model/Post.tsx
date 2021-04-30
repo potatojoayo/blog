@@ -1,11 +1,25 @@
-class Post {
+import {Category} from "../global";
+
+export interface PostType {
+	title: string;
+	subTitle: string;
+	content: string;
+	repImage: string;
+	tags: string[];
+	date: Date;
+	_id: number;
+	category: Category
+}
+
+class Post implements PostType {
 	constructor(public title: string,
 		public subTitle: string,
 		public content: string,
 		public repImage: string,
 		public tags: string[],
 		public date: Date,
-		public id: number,
+		public _id: number,
+		public category: Category,
 
 	) {
 		this.title = title;
@@ -14,7 +28,8 @@ class Post {
 		this.repImage = repImage;
 		this.tags = tags;
 		this.date = date;
-		this.id = id;
+		this._id = _id;
+		this.category = category
 	}
 }
 

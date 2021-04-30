@@ -11,22 +11,17 @@ import {Post as post} from '../../Model'
 
 const Post: React.FC = () => {
 	const markdwonElement = useRef(HTMLDivElement.prototype)
-	const {category, postId} = useParams<Parameter>()
-	const post: post = useSelector((state: RootState) => state.postState)[category][+postId - 1]
+	const {postId} = useParams<Parameter>()
+	const post: post = useSelector((state: RootState) => state.postState).post[+postId - 1]
 	return <Container
 		width='100%'
 		ref={markdwonElement}
 	>
-		{post ?
-			<>
-				<Image backgroundImage={`url(${post.repImage})`}
-					width='100%'
-					height='400px'
-				/>
-				<Markdown value={post.content} />
-			</> :
-			<div />
-		}
+		<Image backgroundImage={`url(${post.repImage})`}
+			width='100%'
+			height='400px'
+		/>
+		<Markdown value={post.content} />
 	</Container>
 }
 

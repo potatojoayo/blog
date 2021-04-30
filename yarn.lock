@@ -7950,6 +7950,14 @@
     "unist-util-is" "^4.0.0"
     "unist-util-visit-parents" "^3.0.0"
 
+"mdast-util-footnote@^0.1.0":
+  "integrity" "sha512-QxNdO8qSxqbO2e3m09KwDKfWiLgqyCurdWTQ198NpbZ2hxntdc+VKS4fDJCmNWbAroUdYnSthu+XbZ8ovh8C3w=="
+  "resolved" "https://registry.npmjs.org/mdast-util-footnote/-/mdast-util-footnote-0.1.7.tgz"
+  "version" "0.1.7"
+  dependencies:
+    "mdast-util-to-markdown" "^0.6.0"
+    "micromark" "~2.11.0"
+
 "mdast-util-from-markdown@^0.8.0":
   "integrity" "sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ=="
   "resolved" "https://registry.npmjs.org/mdast-util-from-markdown/-/mdast-util-from-markdown-0.8.5.tgz"
@@ -8112,6 +8120,13 @@
   "integrity" "sha512-jo1OfR4TaEwd5HOrt5+tAZ9mqT4jmpNAusXtyfNzqVm9uiSYFZlKM1wYL4oU7azZW/PxQW53wM0S6OR1JHNa2g=="
   "resolved" "https://registry.yarnpkg.com/microevent.ts/-/microevent.ts-0.1.1.tgz"
   "version" "0.1.1"
+
+"micromark-extension-footnote@^0.3.0":
+  "integrity" "sha512-gr/BeIxbIWQoUm02cIfK7mdMZ/fbroRpLsck4kvFtjbzP4yi+OPVbnukTc/zy0i7spC2xYE/dbX1Sur8BEDJsQ=="
+  "resolved" "https://registry.npmjs.org/micromark-extension-footnote/-/micromark-extension-footnote-0.3.2.tgz"
+  "version" "0.3.2"
+  dependencies:
+    "micromark" "~2.11.0"
 
 "micromark-extension-gfm-autolink-literal@~0.5.0":
   "integrity" "sha512-ePiDGH0/lhcngCe8FtH4ARFoxKTUelMp4L7Gg2pujYD5CSMb9PbblnyL+AAMud/SNMyusbS2XDSiPIRcQoNFAw=="
@@ -10674,6 +10689,14 @@
   "integrity" "sha1-VNvzd+UUQKypCkzSdGANP/LYiKk="
   "resolved" "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz"
   "version" "0.2.7"
+
+"remark-footnotes@^3.0.0":
+  "integrity" "sha512-ZssAvH9FjGYlJ/PBVKdSmfyPc3Cz4rTWgZLI4iE/SX8Nt5l3o3oEjv3wwG5VD7xOjktzdwp5coac+kJV9l4jgg=="
+  "resolved" "https://registry.npmjs.org/remark-footnotes/-/remark-footnotes-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "mdast-util-footnote" "^0.1.0"
+    "micromark-extension-footnote" "^0.3.0"
 
 "remark-gfm@^1.0.0":
   "integrity" "sha512-KfexHJCiqvrdBZVbQ6RopMZGwaXz6wFJEfByIuEwGf0arvITHjiKKZ1dpXujjH9KZdm1//XJQwgfnJ3lmXaDPA=="

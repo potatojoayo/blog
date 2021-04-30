@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link, useRouteMatch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import dateFormat from 'dateformat'
 
 import {RootState} from '../../store'
 import {Button, Container, Image, Text} from '../styled';
 import {Post} from '../../Model'
-import Tag from './Tag'
 import Font, {FontWeight} from '../../utill/Font'
+import TagListItem from './TagListItem';
 
 interface ListItemProps {
 	post: Post
@@ -17,7 +17,12 @@ interface ListItemProps {
 const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 	const themeState = useSelector((state: RootState) => state.themeState)
 	const theme = themeState.theme
-	const match = useRouteMatch()
+	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
+	const renderedTags = post.tags.map((tag, index) => {
+		return <Link to={`/tags/${tag}`} style={{textDecoration: 'none'}} key={index}>
+			<TagListItem name={tag} color={tagColors[index % 5]} />
+		</Link>
+	})
 	return <Container
 		width='100%'
 		display={isVisible ? 'flex' : 'none'}
@@ -28,7 +33,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 	>
 		<Button
 		>
-			<Link to={`${match.url}/${post.id}`}>
+			<Link to={`/${post.category}/${post._id}`}>
 				<Image
 					width='300px'
 					cursor='pointer'
@@ -59,9 +64,9 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				<Button
 					width='fit-content'
 				>
-					<Link to={`${match.url}/${post.id}`} style={{textDecoration: 'none'}}>
+					<Link to={`/${post.category}/${post._id}`} style={{textDecoration: 'none'}}>
 						<Text
-							fontSize={30}
+							fontSize={33}
 							whiteSpace='nowrap'
 							cursor='pointer'
 							color={theme.text}
@@ -73,20 +78,20 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 					</Link>
 				</Button>
 				<Text
-					color={theme.tag}
-					margin='0 0 9px 15px'
-					userSelect='text'
-					cursor='text'
+					color={theme.icon}
+					margin='0 0 10px 15px'
+					userSelect='none'
+					cursor='default'
 					fontSize={15}
 					display='inline-block'
-				> {'no. ' + post.id} </Text>
+				> {'no.' + post._id} </Text>
 			</Container>
 			<Container
 				maxHeight='100px'
 				overflow='hidden'
 			>
 				<Text
-					fontSize={18}
+					fontSize={20}
 					fontWeight={FontWeight.light}
 					userSelect='text'
 					color={theme.text}
@@ -97,9 +102,9 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 						display='inline-block'
 
 					>
-						<Link to={`${match.url}/${post.id}`} style={{textDecoration: 'none'}}>
+						<Link to={`/${post.category}/${post._id}`} style={{textDecoration: 'none'}}>
 							<Text
-								fontSize={18}
+								fontSize={20}
 								fontWeight={FontWeight.light}
 								display='inline'
 								cursor='pointer'
@@ -107,21 +112,19 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 								borderBottom={`0.15rem solid ${theme.tag}`}
 								margin='0 0 0 10px'
 							>
-								More..
+								more
 					</Text>
 						</Link>
 					</Button>
 				</Text>
 			</Container>
-			<Tag
-				tags={post.tags}
-				color={theme.tag}
-				fontSize={20}
-			/>
+			<Container display='flex' margin='-5px 0 0 -10px'>
+				{renderedTags}
+			</Container>
 			<Text
 				color={theme.icon}
 				whiteSpace='nowrap'
-				userSelect='text'
+				userSelect='none'
 				fontSize={17}
 				margin='5px 0 0 0'
 			>

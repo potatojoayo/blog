@@ -42,9 +42,11 @@ const MenuItem: React.FC<MenuItemProps> =
 				justifyContent='start'
 				margin='0 0 0 20px'
 				onClick={
-					(e) => {
+					() => {
 						if (numChild > 0)
 							dispatch(toggleMenuItem(index))
+						else
+							window.scrollTo({top: 0})
 					}
 				}
 			>

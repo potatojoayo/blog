@@ -1,4 +1,5 @@
 import {Post} from '../Model'
+import {Category} from '../global'
 
 export const test3: Post = {
 	id: 3,
@@ -7,7 +8,8 @@ export const test3: Post = {
 	date: new Date(),
 	repImage: 'https://source.unsplash.com/random',
 	tags: [''],
-	content: ''
+	content: '',
+	category: Category.frontEnd
 }
 
 export const test: Post = {
@@ -17,6 +19,7 @@ export const test: Post = {
 	date: new Date(),
 	repImage: 'https://images.unsplash.com/photo-1502502149488-5452babfc473?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
 	tags: ['1', '2'],
+	category: Category.frontEnd,
 	content: `# Hello *world*!
 ---
 
@@ -53,6 +56,7 @@ _You **can** combine them_
   1. Item 3a
   1. Item 3b
  
+Here is a footnote reference,[^1]
 
 ## Images
 
@@ -201,6 +205,7 @@ const App: React.FC = () => {
 	)
 }
 ~~~
+[^1]: Here is the footnote.
 	`
 }
 export const test2: Post = {
@@ -208,6 +213,7 @@ export const test2: Post = {
 	title: "그런 개발자로 괜찮은가 - '멘토링' 편",
 	subTitle: '이런저런 고생 끝에 원하는 회사에 취업을 해서 ‘주니어’라는 꼬리표를 달고 이제 막 회사 생활을 하다 보면 경험이 부족해서 실수를 하거나 기대했던 업무 퍼포먼스가 나오지 않는 경우가 종종 생긴다. ',
 	date: new Date(2021, 3, 1),
+	category: Category.frontEnd,
 	repImage: 'https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=641&q=80',
 	tags: ['mentoring', 'a-good-developer', 'archives-2021'],
 	content: ''

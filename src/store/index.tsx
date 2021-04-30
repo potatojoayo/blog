@@ -1,12 +1,12 @@
 import {createStore, combineReducers} from 'redux'
 import {persistStore, persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import ThemeReducer from './theme/reducer'
-import NotifierReducer from './notifier/reducer'
-import SnackbarReducer from './snackbar/reducer'
-import SideMenuReducer from './sideMenu/reducer'
-import WindowSizeReducer from './windowSize/reducer'
-import PostReducer from './post/reducer'
+import ThemeReducer, {ThemeState} from './theme/reducer'
+import NotifierReducer, {NotifierState} from './notifier/reducer'
+import SnackbarReducer, {SnackbarState} from './snackbar/reducer'
+import SideMenuReducer, {SideMenuState} from './sideMenu/reducer'
+import WindowSizeReducer, {WindowSizeState} from './windowSize/reducer'
+import PostReducer, {PostState} from './post/reducer'
 
 
 const persistConfig = {
@@ -25,7 +25,14 @@ const reducers = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = {
+	themeState: ThemeState,
+	notifierState: NotifierState,
+	snackbarState: SnackbarState,
+	sideMenuState: SideMenuState,
+	windowSizeState: WindowSizeState,
+	postState: PostState
+}
 
 const store = createStore(persistedReducer)
 export const persistor = persistStore(store)

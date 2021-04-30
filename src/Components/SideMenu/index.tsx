@@ -7,7 +7,7 @@ import {toggleNotifier} from '../../store/notifier/action'
 import {RootState} from '../../store'
 import {Container, Image, Text, Icon, Button} from '../styled'
 import Colors from '../../utill/Colors'
-import {avatar, i_study, i_works, i_article, i_backend, i_frontend, i_algorithm, i_chevron_left, at, github, linkedIn} from '../../assets'
+import {avatar, i_study, i_works, i_article, i_backend, i_frontend, i_algorithm, i_chevron_left, at, github, linkedIn, i_tag} from '../../assets'
 import MenuItem from './MenuItem'
 import SubItem from './SubItem'
 import {DISPLAY_SIZE} from '../../utill/media_query'
@@ -25,6 +25,7 @@ const SideMenu: React.FC = () => {
 		<Container
 			minWidth={isOpen ? '230px' : '0px'}
 			width={isOpen ? '230px' : '0px'}
+			userSelect='none'
 			backgroundColor={theme.mildBackground}
 			position='fixed'
 			height='110vh'
@@ -233,6 +234,28 @@ const SideMenu: React.FC = () => {
 					numChild={0}
 				/>
 			</Link>
+			<Link to='/tags' style={{textDecoration: 'none', width: '100%'}} replace>
+				<MenuItem
+					icon={i_tag}
+					name='TAGS'
+					index={3}
+					numChild={0}
+				/>
+			</Link>
+			<Container
+				position='absolute'
+				bottom={windowSize === DISPLAY_SIZE.MOBILE ? '30px' : '130px'}
+				flexWrap='nowrap'
+				width='95%'
+			>
+				<Text
+					textAlign='center'
+					fontFamily='PT Sans'
+					whiteSpace='nowrap'
+					color={theme.text}
+					fontSize={12}
+				>© 2021 potatojoayo  All rights reserved</Text>
+			</Container>
 		</Container >
 	)
 }

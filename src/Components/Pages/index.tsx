@@ -56,6 +56,16 @@ const Pages: React.FC = () => {
 					title={'WORKS'}
 				/>
 			</Route>
+			<Route path='/tags'>
+				<PageLayout
+					title={'TAGS'}
+				/>
+			</Route>
+			<Route path='/tags/:tag'>
+				<PageLayout
+					title={'TAGS'}
+				/>
+			</Route>
 		</Switch>
 	</Container>
 }

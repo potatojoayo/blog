@@ -9,6 +9,10 @@ enum COLORS {
 	FRONT_END = '#ee6c4d',
 	BACK_END = '#457b9d',
 	ALGORITHM = '#e9c46a',
+	PERSIAN_GREEN = '#2A9D8F',
+	HONEY_YELLOW = '#f8961e',
+	TAG_GREEN = '#2b9348'
+
 }
 
 // #E0E0E0

@@ -1,7 +1,7 @@
 import NOTIFIER_ACTION_TYPE from './action_type'
 import {NotifierAction} from './action'
 
-interface NotifierState {
+export interface NotifierState {
 	isOpen: boolean
 }
 

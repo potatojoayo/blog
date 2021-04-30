@@ -1,27 +1,22 @@
 import {PostAction, POST_ACTION_TYPE} from './action'
 import {Post} from '../../Model'
-import {Category} from '../../global'
 
 
 
-interface PostState {
-	[category: string]: Post[],
+export interface PostState {
+	post: Post[]
 }
 
 const initalState: PostState = {
-	[Category.frontEnd]: [],
-	[Category.backEnd]: [],
-	[Category.algorithm]: [],
-	[Category.article]: [],
-	[Category.works]: []
+	post: []
 }
 
-const postReducer = (state: PostState = initalState, action: PostAction) => {
+const postReducer = (state: PostState = initalState, action: PostAction): PostState => {
 	switch (action.type) {
 		case POST_ACTION_TYPE.PUSH_POST:
 			return {
 				...state,
-				[action.payload.category]: action.payload.post
+				post: action.payload.post
 			}
 		default:
 			return state;

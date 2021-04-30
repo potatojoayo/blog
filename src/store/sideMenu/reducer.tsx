@@ -1,14 +1,14 @@
 import SIDE_MENU_ACTION_TYPE from './action_type';
 import {SideMenuAction} from './action';
 
-interface SideMenuState {
+export interface SideMenuState {
 	isSideMenuOpen: boolean;
 	isMenuItemOpen: boolean[];
 }
 
 const initialState: SideMenuState = {
 	isSideMenuOpen: false,
-	isMenuItemOpen: [false, false, false]
+	isMenuItemOpen: [false, false, false, false]
 }
 
 const SideMenuReducer = (state: SideMenuState = initialState, action: SideMenuAction) => {
