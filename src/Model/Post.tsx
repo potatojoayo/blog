@@ -1,14 +1,14 @@
 import {Category} from "../global";
 
 export interface PostType {
-	title: string;
-	subTitle: string;
-	content: string;
-	repImage: string;
-	tags: string[];
-	date: Date;
-	_id: number;
-	category: Category
+	title?: string;
+	subTitle?: string;
+	content?: string;
+	repImage?: string;
+	tags?: string[];
+	date?: Date;
+	_id?: number;
+	category?: Category
 }
 
 class Post implements PostType {

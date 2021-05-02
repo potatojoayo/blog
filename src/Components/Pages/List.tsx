@@ -25,18 +25,17 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 	const {category, tag} = useParams<Parameter>()
 	const useQuery = () => new URLSearchParams(useLocation().search)
 	const query = useQuery()
-	const postState = useSelector((state: RootState) => state.postState)
+	const posts = useSelector((state: RootState) => state.postState).post
 	if (!tag) {
 		currentPage = +query.get('page')!
-		items = postState.post.filter((post) => post.category === category)
+		items = posts.filter((post) => post.category === category)
 	} else {
-		postState.post.forEach((post) => {
+		posts.forEach((post) => {
 			if (post.tags.includes(tag))
 				return items.push(post)
 		})
 	}
 	const renderedItems = items.map((post, index) => {
-		console.log(post)
 		return <ListItem post={post} key={index} isVisible={true} />
 	})
 	return <Container
@@ -48,7 +47,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 		<Container
 			display='flex'
 			width='100%'
-			margin='0 0 10px 0'
+			margin='0 0 5px 0'
 		>
 			<Container
 				display='flex'
@@ -60,12 +59,12 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					flexDirection='column'
 				>
 					{tag ?
-						<Text color={theme.tag} fontSize={30} fontFamily='Ubuntu' >
+						<Text color={theme.tag} fontSize={30} fontFamily={Font.list_meta} cursor='default' userSelect='none' >
 							{'# ' + tag}
 						</Text> :
 						<Button>
 							<Text
-								fontFamily={Font.menu}
+								fontFamily={Font.list_meta}
 								cursor='pointer'
 								fontWeight={FontWeight.medium}
 								fontSize={35}
@@ -81,7 +80,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					{subTitle ?
 						<Button>
 							<Text
-								fontFamily={Font.menu}
+								fontFamily={Font.list_meta}
 								fontWeight={FontWeight.regular}
 								fontSize={30}
 								cursor='pointer'
@@ -103,7 +102,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					{currentPage >= 0 ?
 						<Text
 							color={theme.text}
-							fontFamily={Font.tag}
+							fontFamily={Font.menu}
 							cursor='default'
 							userSelect='none'
 						>{'page: ' + currentPage}</Text>
@@ -112,14 +111,14 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					<Text
 						color={theme.text}
 						cursor='default'
-						fontFamily={Font.tag}
+						fontFamily={Font.menu}
 						margin='0 0 0 10px'
 						userSelect='none'
 					>{'total posts: ' + items.length}</Text>
 				</Container>
 			</Container>
 		</Container>
-		<Container width='100%' minHeight='1px' backgroundColor={theme.icon} margin='10px 0'
+		<Container width='100%' minHeight='1px' backgroundColor={theme.icon} margin='3px 0 10px 0'
 		/>
 		{renderedItems}
 		{items.length > 5 ?

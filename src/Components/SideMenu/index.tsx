@@ -11,6 +11,7 @@ import {avatar, i_study, i_works, i_article, i_backend, i_frontend, i_algorithm,
 import MenuItem from './MenuItem'
 import SubItem from './SubItem'
 import {DISPLAY_SIZE} from '../../utill/media_query'
+import Font from '../../utill/Font'
 
 
 const SideMenu: React.FC = () => {
@@ -165,22 +166,25 @@ const SideMenu: React.FC = () => {
 				maxWidth='190px'
 				margin='30px 0 0 0'
 				fontFamily='Do Hyeon'
-				fontSize={17}
+				fontSize={15}
 				mobile={{
-					fontSize: 15,
+					fontSize: 14,
 					margin: '23px 0 0 0'
 				}}
 			>
-				<Text margin='-15px 0 0 0' textAlign='center'
+				<Text margin='-14px 0 0 0' textAlign='center'
+					fontFamily={Font.introduce}
 					color={theme.text}
+					cursor='default'
 				>
-					즐거운 개발자입니다
-				</Text>
-				<Text margin='-5px 0 0 0' textAlign='center'
+					시골에 살아요
+			</Text>
+				<Text margin='-3px 0 0 0' textAlign='center'
+					fontFamily={Font.introduce}
 					color={theme.text}
-
+					cursor='default'
 				>
-					감자를 좋아합니다 🍟
+					달콤한 수박도 키워요 🍉
 				</Text>
 			</Container>
 			<Container
@@ -196,21 +200,21 @@ const SideMenu: React.FC = () => {
 				index={0}
 				numChild={3}
 			>
-				<Link to='/front-end?page=1' style={{textDecoration: 'none'}} replace>
+				<Link to='/list/front-end?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_frontend}
 						name='front-end'
 						iconColor={Colors.FRONT_END}
 					/>
 				</Link>
-				<Link to='/back-end?page=1' style={{textDecoration: 'none'}} replace>
+				<Link to='/list/back-end?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_backend}
 						name='back-end'
 						iconColor={Colors.BACK_END}
 					/>
 				</Link>
-				<Link to='/algorithm?page=1' style={{textDecoration: 'none'}} replace>
+				<Link to='/list/algorithm?page=1' style={{textDecoration: 'none'}} replace>
 					<SubItem
 						icon={i_algorithm}
 						name='algorithm'
@@ -218,7 +222,7 @@ const SideMenu: React.FC = () => {
 					/>
 				</Link>
 			</MenuItem>
-			<Link to='/article?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
+			<Link to='/list/article?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
 				<MenuItem
 					icon={i_article}
 					name='ARTICLE'
@@ -226,7 +230,7 @@ const SideMenu: React.FC = () => {
 					numChild={0}
 				/>
 			</Link>
-			<Link to='/works?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
+			<Link to='/list/works?page=1' style={{textDecoration: 'none', width: '100%'}} replace>
 				<MenuItem
 					icon={i_works}
 					name='WORKS'
@@ -234,7 +238,7 @@ const SideMenu: React.FC = () => {
 					numChild={0}
 				/>
 			</Link>
-			<Link to='/tags' style={{textDecoration: 'none', width: '100%'}} replace>
+			<Link to='/list/tags' style={{textDecoration: 'none', width: '100%'}} replace>
 				<MenuItem
 					icon={i_tag}
 					name='TAGS'

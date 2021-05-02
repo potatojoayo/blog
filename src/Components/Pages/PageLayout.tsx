@@ -8,11 +8,10 @@ import {RootState} from '../../store'
 import Post from './Post'
 import {Container} from '../styled'
 import List from './List'
-import WritePost from './WritePost'
 
 
 interface PageLayoutProps {
-	title: string;
+	title?: string;
 	subTitle?: string;
 	children?: React.ReactNode
 }
@@ -38,29 +37,26 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 			padding='20px 30px'
 		>
 			<Switch>
-				<Route path={`/tags`} exact>
+				<Route path={`/list/tags`} >
 					<TagList />
 				</Route >
 				<Route path={`/tags/:tag`}  >
 					<List
-						title={title}
+						title={title!}
 						subTitle={subTitle!}
 						theme={theme}
 					/>
 				</Route>
-				<Route path={`/:category`} exact >
+				<Route path={`/list/:category`}  >
 					<List
-						title={title}
+						title={title!}
 						subTitle={subTitle!}
 						theme={theme}
 					/>
 				</Route>
-				<Route path={`/:category/:postId`}>
+				<Route path={`/post/:postId`}>
 					<Post />
 				</Route >
-				<Route path={'/write'}>
-					<WritePost />
-				</Route>
 			</Switch>
 		</Container>
 	</Container>

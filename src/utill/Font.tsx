@@ -1,11 +1,13 @@
-
-
 const Font = {
 	headline_normal: 'PT Sans',
-	normal: 'Ubuntu',
-	menu: 'Ubuntu',
-	tag: 'Ubuntu',
-	default: 'ubuntu'
+	post_title: 'Maple Bold',
+	menu: 'IBMPlexSansKR-Regular',
+	introduce: 'We Semibold',
+	list_meta: 'Ubuntu',
+	tag: 'Cookie',
+	post_sub_title: 'IBMPlexSansKR-Regular',
+	side_menu: 'Ubuntu',
+	default: 'Ubuntu'
 }
 
 export const FontWeight = {

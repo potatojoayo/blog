@@ -3,11 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
 
 //TODO: API
-import {getAllPosts} from './api'
-
-import {PostType} from './Model/Post'
 import './utill/app.css'
-import {pushPosts} from './store/post/action'
 import Container from './Components/styled/Container'
 import NavBar from './Components/NavBar'
 import {RootState} from './store'
@@ -20,30 +16,20 @@ import {setWindowSize} from './store/windowSize/action'
 import {breakpoints, DISPLAY_SIZE} from './utill/media_query';
 import {toggleSideMenu} from './store/sideMenu/action';
 import {CSSObject} from '@emotion/serialize';
-import {AxiosResponse} from 'axios';
+import {useDataFetcher} from './hooks';
 
 
 const App: React.FC = () => {
 	const notifierState = useSelector((state: RootState) => state.notifierState)
 	const isSideMenuOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
-	const posts = useSelector((state: RootState) => state.postState).post
 	const themeState = useSelector((state: RootState) => state.themeState)
 	const theme = themeState.theme
 	const isDark = themeState.isDark
 	const dispatch = useDispatch()
 	const windowSize = useSelector((state: RootState) => state.windowSizeState).displaySize
+	useDataFetcher()
 	document.body.className = isDark ? 'dark-body' : 'light-body'
 	useEffect(() => {
-		if (posts?.length === 0)
-			getAllPosts().then((res: AxiosResponse<PostType[]>) => {
-				dispatch(pushPosts(res.data))
-			})
-	}, [dispatch, posts?.length])
-	useEffect(() => {
-		const wheelHandler: any = (e: WheelEvent) => {
-			if ((window.scrollY <= 0 && e.deltaY < 0))
-				e.preventDefault()
-		}
 		const windowSizeHandler = () => {
 			const width = window.innerWidth;
 			if (width < breakpoints[0]) {
@@ -56,10 +42,8 @@ const App: React.FC = () => {
 		}
 		windowSizeHandler()
 		window.addEventListener('resize', windowSizeHandler);
-		window.addEventListener('mousewheel', wheelHandler, {passive: false})
 		return () => {
 			window.removeEventListener('resize', windowSizeHandler)
-			window.removeEventListener('mousewheel', wheelHandler)
 		}
 	}, [dispatch, notifierState.isOpen])
 	const filter: CSSObject = {

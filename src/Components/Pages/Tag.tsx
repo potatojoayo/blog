@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {Container, Text, Button, Icon} from '../styled'
+import {Container, Text, Icon} from '../styled'
 import Font, {FontWeight} from '../../utill/Font'
 import {i_tag} from '../../assets'
 
@@ -19,20 +18,16 @@ const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine}) => {
 			margin='0 10px 0 0'
 			flexWrap='nowrap'
 		>
-			<Link to={`/tags/${item}`} style={{textDecoration: 'none'}}>
-				<Button>
-					<Text
-						cursor='pointer'
-						color={color}
-						fontFamily={Font.tag}
-						fontWeight={FontWeight.light}
-						bottomLineColor={bottomLine ? color : ''}
-						fontSize={fontSize}
-					>
-						#{item}
-					</Text>
-				</Button>
-			</Link>
+			<Text
+				cursor='pointer'
+				color={color}
+				fontFamily={Font.tag}
+				fontWeight={FontWeight.light}
+				bottomLineColor={bottomLine ? color : ''}
+				fontSize={fontSize}
+			>
+				#{item}
+			</Text>
 		</Container>
 	})
 	return <Container
@@ -43,7 +38,7 @@ const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine}) => {
 		<Icon
 			className={i_tag}
 			color={color}
-			cursor='default'
+			cursor='pointer'
 			margin='0 10px 0 0'
 		/>
 		{Tags}

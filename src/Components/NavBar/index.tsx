@@ -68,7 +68,7 @@ const NavBar: React.FC = () => {
 					}}
 				>
 					<Button>
-						<Link to='/' style={{textDecoration: 'none'}} replace>
+						<Link to='/home' style={{textDecoration: 'none'}} replace>
 							<Text
 								fontFamily={Font.headline_normal}
 								cursor='pointer'

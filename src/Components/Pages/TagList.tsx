@@ -25,7 +25,7 @@ const TagList: React.FC = () => {
 	return <Container
 	>
 		<Text
-			fontFamily={Font.menu}
+			fontFamily={Font.list_meta}
 			fontWeight={FontWeight.medium}
 			cursor='default'
 			fontSize={35}

@@ -33,7 +33,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 	>
 		<Button
 		>
-			<Link to={`/${post.category}/${post._id}`}>
+			<Link to={`/post/${post._id}`}>
 				<Image
 					width='300px'
 					cursor='pointer'
@@ -64,11 +64,12 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				<Button
 					width='fit-content'
 				>
-					<Link to={`/${post.category}/${post._id}`} style={{textDecoration: 'none'}}>
+					<Link to={`/post/${post._id}`} style={{textDecoration: 'none'}}>
 						<Text
 							fontSize={33}
 							whiteSpace='nowrap'
 							cursor='pointer'
+							fontFamily={Font.post_title}
 							color={theme.text}
 							fontWeight={FontWeight.medium}
 							margin='0 0 5px 0'
@@ -79,7 +80,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				</Button>
 				<Text
 					color={theme.icon}
-					margin='0 0 10px 15px'
+					margin='0 0 13px 15px'
 					userSelect='none'
 					cursor='default'
 					fontSize={15}
@@ -94,28 +95,11 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 					fontSize={20}
 					fontWeight={FontWeight.light}
 					userSelect='text'
+					fontFamily={Font.post_sub_title}
 					color={theme.text}
 					margin='0 0 10px 0'
 				>
 					{post.subTitle}
-					<Button
-						display='inline-block'
-
-					>
-						<Link to={`/${post.category}/${post._id}`} style={{textDecoration: 'none'}}>
-							<Text
-								fontSize={20}
-								fontWeight={FontWeight.light}
-								display='inline'
-								cursor='pointer'
-								color={theme.tag}
-								borderBottom={`0.15rem solid ${theme.tag}`}
-								margin='0 0 0 10px'
-							>
-								more
-					</Text>
-						</Link>
-					</Button>
 				</Text>
 			</Container>
 			<Container display='flex' margin='-5px 0 0 -10px'>
@@ -124,6 +108,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 			<Text
 				color={theme.icon}
 				whiteSpace='nowrap'
+				cursor='default'
 				userSelect='none'
 				fontSize={17}
 				margin='5px 0 0 0'

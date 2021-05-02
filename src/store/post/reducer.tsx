@@ -4,7 +4,7 @@ import {Post} from '../../Model'
 
 
 export interface PostState {
-	post: Post[]
+	post: Post[],
 }
 
 const initalState: PostState = {

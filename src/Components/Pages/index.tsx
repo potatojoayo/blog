@@ -1,9 +1,10 @@
 import React, {useRef, useEffect} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import {Container} from '../styled'
 import LandingPage from './LandingPage'
 import PageLayout from './PageLayout'
+import WritePost from './WritePost'
 
 
 const Pages: React.FC = () => {
@@ -25,38 +26,41 @@ const Pages: React.FC = () => {
 		alignItems='center'
 	>
 		<Switch>
-			<Route path='/' exact >
+			<Route exact path="/">
+				<Redirect to="/home" />
+			</Route>
+			<Route path='/home' >
 				<LandingPage />
 			</Route>
-			<Route path='/front-end'>
+			<Route path='/list/front-end'>
 				<PageLayout
 					title={'STUDY'}
 					subTitle={'front-end'}
 				/>
 			</Route>
-			<Route path='/back-end'>
+			<Route path='/list/back-end'>
 				<PageLayout
 					title={'STUDY'}
 					subTitle={'back-end'}
 				/>
 			</Route>
-			<Route path='/algorithm'>
+			<Route path='/list/algorithm'>
 				<PageLayout
 					title={'STUDY'}
 					subTitle={'algorithm'}
 				/>
 			</Route>
-			<Route path='/article'>
+			<Route path='/list/article'>
 				<PageLayout
 					title={'ARTICLE'}
 				/>
 			</Route>
-			<Route path='/works'>
+			<Route path='/list/works'>
 				<PageLayout
 					title={'WORKS'}
 				/>
 			</Route>
-			<Route path='/tags'>
+			<Route path='/list/tags'>
 				<PageLayout
 					title={'TAGS'}
 				/>
@@ -65,6 +69,13 @@ const Pages: React.FC = () => {
 				<PageLayout
 					title={'TAGS'}
 				/>
+			</Route>
+			<Route path='/post/:postId'>
+				<PageLayout
+				/>
+			</Route>
+			<Route path='/write'>
+				<WritePost />
 			</Route>
 		</Switch>
 	</Container>
