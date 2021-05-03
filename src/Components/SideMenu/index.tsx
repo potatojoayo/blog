@@ -170,7 +170,8 @@ const SideMenu: React.FC = () => {
 				fontSize={15}
 				mobile={{
 					fontSize: 14,
-					margin: '23px 0 0 0'
+					margin: '23px 0 0 0',
+					display: 'none'
 				}}
 			>
 				<Text margin='-14px 0 0 0' textAlign='center'
@@ -249,7 +250,7 @@ const SideMenu: React.FC = () => {
 			</Link>
 			<Container
 				position='absolute'
-				bottom={windowSize === DISPLAY_SIZE.MOBILE ? '30px' : '130px'}
+				bottom={windowSize === DISPLAY_SIZE.MOBILE ? '20px' : '130px'}
 				flexWrap='nowrap'
 				width='95%'
 			>
