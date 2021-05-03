@@ -25,23 +25,24 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 
 	const isDark = useSelector((state: RootState) => state.themeState).isDark
 	const isSideOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
-
 	const pageLayout = document.querySelector('.page-layout')
-	const tableOfContent = document.querySelector('.toc')
-	tableOfContent?.classList.toggle('side-open', !isSideOpen)
+
 	useEffect(() => {
+		const tableOfContent = document.querySelector('.toc')
+		tableOfContent?.classList.toggle('side-close', isSideOpen)
 		setTimeout(() => {
-			tableOfContent?.classList.remove('hide')
 			if (pageLayout?.clientWidth! < 1430) {
-				tableOfContent?.classList.add('hide')
+				tableOfContent?.classList.remove('open')
 			}
+			else
+				tableOfContent?.classList.add('open')
 		}, 200)
-	}, [isSideOpen, pageLayout?.clientWidth, tableOfContent])
+	}, [isSideOpen, pageLayout?.clientWidth])
+
 
 	useEffect(() => {
 		const tocItems = document.querySelectorAll('.toc-item a')
 		let headers: HTMLHeadElement[] = [];
-
 		for (let i = 0; i < tocItems.length; i++) {
 			const item = tocItems.item(i) as HTMLAnchorElement
 			const href = item.href.split('#')
@@ -70,7 +71,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 			className={className ? className : isDark ? 'markdown-body-dark' : 'markdown-body'}
 			children={value}
 			remarkPlugins={[gfm, footnotes,]}
-			rehypePlugins={[slug, toc]}
+			rehypePlugins={[slug, toc,]}
 			components={
 				{
 					a: MarkdownLinkRenderer,

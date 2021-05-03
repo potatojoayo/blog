@@ -104,7 +104,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 					</Text>
 				</Link>
 			</Container>
-			<Container display='flex' margin='-5px 0 0 -10px'>
+			<Container display='flex' margin='-5px 0 0 -10px' flexWrap='wrap'>
 				{renderedTags}
 			</Container>
 			<Text

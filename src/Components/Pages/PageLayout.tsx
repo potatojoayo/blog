@@ -8,6 +8,7 @@ import {RootState} from '../../store'
 import Post from './Post'
 import {Container} from '../styled'
 import List from './List'
+import {DISPLAY_SIZE} from '../../utill/media_query'
 
 
 interface PageLayoutProps {
@@ -20,6 +21,7 @@ interface PageLayoutProps {
 const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 
 	const themeState = useSelector((state: RootState) => state.themeState);
+	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	const theme = themeState.theme;
 
 	return <Container
@@ -35,7 +37,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 			maxWidth='1000px'
 			display='flex'
 			flexDirection='column'
-			padding='20px 30px'
+			padding={displaySize === DISPLAY_SIZE.MOBILE ? '20px 15px' : '20px 30px'}
 		>
 			<Switch>
 				<Route path={`/list/tags`} >

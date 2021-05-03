@@ -22,8 +22,6 @@ p, li, tr, th {
 }
 
 
-
-
 .toc li {
 	font-size: 15px !important;
 }
@@ -44,20 +42,23 @@ p, li, tr, th {
 	padding: 2px 3px;
 }
 
+
 .toc {
 	position: fixed;
-	left: 220px;
+	left: -300px;
 	top: 80px;
+	display: none;
 	transition: left linear .2s;
 }
 
-.toc.hide{
-	display:none;
+.open{
+	left: -20px;
+	display: flex;
 }
 
-.side-open {
+.side-close {
 	position: fixed;
-	left: -20px;
+	left: 220px;
 	top: 80px;
 }
 

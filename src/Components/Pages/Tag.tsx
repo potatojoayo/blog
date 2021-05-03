@@ -17,12 +17,12 @@ const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine, count}) => 
 		return <Container
 			key={item}
 			margin='0 10px 0 0'
-			flexWrap='nowrap'
 		>
 			<Text
 				cursor='pointer'
 				color={color}
 				fontFamily={Font.tag}
+				whiteSpace='nowrap'
 				fontWeight={FontWeight.light}
 				bottomLineColor={bottomLine ? color : ''}
 				fontSize={fontSize}
