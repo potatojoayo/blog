@@ -10,6 +10,7 @@ import PageIndex from './PageIndex'
 import Font, {FontWeight} from '../../utill/Font'
 import {ThemeType} from '../../utill/Theme'
 import {Post} from '../../Model'
+import TagListItem from './TagListItem'
 
 
 interface ListProps {
@@ -25,6 +26,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 	const {category, tag} = useParams<Parameter>()
 	const useQuery = () => new URLSearchParams(useLocation().search)
 	const query = useQuery()
+	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
 	const posts = useSelector((state: RootState) => state.postState).post
 	if (!tag) {
 		currentPage = +query.get('page')!
@@ -59,9 +61,12 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 					flexDirection='column'
 				>
 					{tag ?
-						<Text color={theme.tag} fontSize={30} fontFamily={Font.list_meta} cursor='default' userSelect='none' >
-							{'# ' + tag}
-						</Text> :
+						<TagListItem
+							name={tag}
+							color={tagColors[Math.floor(Math.random() * 4)]}
+							fontSize={25}
+							margin='0 0 5px -5px' />
+						:
 						<Button>
 							<Text
 								fontFamily={Font.list_meta}

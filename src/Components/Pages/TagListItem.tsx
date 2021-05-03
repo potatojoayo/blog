@@ -1,3 +1,4 @@
+import {CSSObject} from '@emotion/serialize'
 import React from 'react'
 import {useSelector} from 'react-redux'
 import {RootState} from '../../store'
@@ -9,18 +10,20 @@ interface TagListItemProps {
 	name: string;
 	color: string;
 	count?: number;
+	fontSize?: number;
+	margin?: CSSObject['margin']
 }
 
-const TagListItem: React.FC<TagListItemProps> = ({name, color, count}) => {
+const TagListItem: React.FC<TagListItemProps> = ({name, color, count, fontSize, margin}) => {
 	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	return <Button
 		borderRadius='10px'
 		backgroundColor={color}
-		margin='5px 5px'
+		margin={margin ? margin : '5px'}
 		onClick={() => {window.scrollTo({top: 0})}}
-		padding='10px 10px'
+		padding='8px 3px 8px 10px'
 	>
-		<Tag tags={[name]} color={'#E0E0E0'} fontSize={displaySize === DISPLAY_SIZE.MOBILE ? 13 : 15} bottomLine={false} count={count} />
+		<Tag tags={[name]} color={'#E0E0E0'} fontSize={fontSize ? fontSize : displaySize === DISPLAY_SIZE.MOBILE ? 13 : 15} bottomLine={false} count={count} />
 	</Button>
 }
 

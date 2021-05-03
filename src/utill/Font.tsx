@@ -1,7 +1,7 @@
 const Font = {
 	headline_normal: 'PT Sans',
 	post_title: 'BMJUA',
-	menu: 'IBMPlexSansKR-Regular',
+	menu: 'Ubuntu',
 	introduce: 'We Semibold',
 	list_meta: 'Ubuntu',
 	tag: 'Cookie',
