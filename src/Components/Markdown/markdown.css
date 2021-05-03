@@ -12,15 +12,21 @@ blockquote {
 	padding: 13px 20px !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Maple Bold'
+h1, h2  {
+	font-family: 'BMHANNAPro'
 }
 
 p, li, tr, th {
-	font-family: 'IBMPlexSansKR-Regular';
+	font-family: 'BMHANNAAir';
+	font-size: 20px;
 }
 
 
+
+
+.toc li {
+	font-size: 15px !important;
+}
 
 .toc a {
 	color: grey !important;
@@ -49,22 +55,10 @@ p, li, tr, th {
 	display:none;
 }
 
-.toc.side-open {
+.side-open {
 	position: fixed;
 	left: -20px;
 	top: 80px;
-}
-
-ul li {
-	list-style-type: upper-roman;
-}
-
-ul ul li{
-	list-style-type: lower-roman;
-}
-
-ul li a {
-	font-size: 20px !important;
 }
 
 .markdown-body .octicon {

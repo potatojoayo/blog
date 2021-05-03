@@ -1,18 +1,19 @@
-import React from 'react'
-import {prism} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import darkCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/pojoaque'
+import lightCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/nord'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 
-interface CodeBlockProps {
-	language: string;
-	value: string;
-}
 
-const CodeBlock: React.FC<CodeBlockProps> = ({language, value}) => {
+
+const CodeBlock = (isDark: boolean) => (props: any) => {
+	const language: string = props.node.properties.className + ''
+	const lang = language.split('-')
 	return (
-		<SyntaxHighlighter language={language} style={prism}>
-			{value}
+		<SyntaxHighlighter language={lang[1]} style={isDark ? darkCodeTheme : lightCodeTheme}
+		>
+			{props.node.children[0].value}
 		</SyntaxHighlighter>
 	);
 };
+
 
 export default CodeBlock;

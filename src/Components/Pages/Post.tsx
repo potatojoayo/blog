@@ -43,7 +43,7 @@ const Post: React.FC = () => {
 				whiteSpace='nowrap'
 				userSelect='none'
 				fontSize={17}
-				margin='0px 0 5px 0'
+				margin='10px 0 3px 0'
 			>
 				{dateFormat(post.date, 'dddd, mmmm dS, yyyy')}
 			</Text>

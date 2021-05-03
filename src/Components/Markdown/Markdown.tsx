@@ -1,8 +1,5 @@
 import React, {useEffect} from 'react'
 import ReactMarkdown from 'react-markdown'
-import darkCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/pojoaque'
-import lightCodeTheme from 'react-syntax-highlighter/dist/esm/styles/prism/nord'
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import footnotes from 'remark-footnotes'
 import gfm from 'remark-gfm'
 import {Container} from '../styled'
@@ -10,27 +7,18 @@ import {useSelector} from 'react-redux'
 import {RootState} from '../../store'
 import toc from 'rehype-toc'
 import slug from 'rehype-slug'
+import MarkdownImage from './MarkdownImage'
+import CodeBlock from './CodeBloc'
 
 import '../Markdown/markdown_dark.css'
 import '../Markdown/markdown.css'
 import '../Markdown/markdown_preview.css'
 import '../Markdown/markdown_preview_dark.css'
+import MarkdownLinkRenderer from './MarkdownLinkRenderer'
 
 interface MarkdownProp {
 	value: string;
 	className?: string;
-}
-
-
-const MarkdownLinkRenderer = (props: any) => {
-	return (
-		(props.href + '').includes('http') ?
-			<a href={props.href!}
-				target='_blank'
-				rel='noreferrer noopener'
-			>{props.children}</a>
-			: <a href={props.href}>{props.children}</a>
-	);
 }
 
 const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
@@ -38,27 +26,11 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 	const isDark = useSelector((state: RootState) => state.themeState).isDark
 	const isSideOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
 
-	const CodeBlock = (props: any) => {
-		const language: string = props.node.properties.className + ''
-		const lang = language.split('-')
-		return (
-			<SyntaxHighlighter language={lang[1]} style={isDark ? darkCodeTheme : lightCodeTheme}
-			>
-				{props.node.children[0].value}
-			</SyntaxHighlighter>
-		);
-	};
-	const MarkdownImage = (props: any) => {
-		return (
-			<img src={props.src} alt={props.alt} width='100%' />
-		)
-	}
 	const pageLayout = document.querySelector('.page-layout')
 	const tableOfContent = document.querySelector('.toc')
 	tableOfContent?.classList.toggle('side-open', !isSideOpen)
 	useEffect(() => {
 		setTimeout(() => {
-			console.log(pageLayout?.clientWidth)
 			tableOfContent?.classList.remove('hide')
 			if (pageLayout?.clientWidth! < 1430) {
 				tableOfContent?.classList.add('hide')
@@ -69,13 +41,16 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 	useEffect(() => {
 		const tocItems = document.querySelectorAll('.toc-item a')
 		let headers: HTMLHeadElement[] = [];
+
 		for (let i = 0; i < tocItems.length; i++) {
 			const item = tocItems.item(i) as HTMLAnchorElement
 			const href = item.href.split('#')
 			const id = href[href.length - 1]
 			headers.push(document.getElementById(id) as HTMLHeadElement)
 		}
+
 		tocItems.item(0)?.classList.add('on')
+
 		const scrollHandler = () => {
 			headers.forEach((header, index) => {
 				if (header?.offsetTop - window.scrollY <= 0) {
@@ -88,7 +63,6 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 		}
 		window.addEventListener('scroll', scrollHandler)
 		return () => window.removeEventListener('scroll', scrollHandler)
-
 	}, [])
 
 	return (
@@ -100,7 +74,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 			components={
 				{
 					a: MarkdownLinkRenderer,
-					code: CodeBlock,
+					code: CodeBlock(isDark),
 					pre: Container,
 					img: MarkdownImage,
 				}

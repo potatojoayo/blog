@@ -1,6 +1,6 @@
 const Font = {
 	headline_normal: 'PT Sans',
-	post_title: 'Maple Bold',
+	post_title: 'BMJUA',
 	menu: 'IBMPlexSansKR-Regular',
 	introduce: 'We Semibold',
 	list_meta: 'Ubuntu',

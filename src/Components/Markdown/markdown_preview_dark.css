@@ -23,17 +23,6 @@
 	font-size: 2rem;
 }
 
-ul li {
-	list-style-type: upper-roman;
-}
-
-ul ul li{
-	list-style-type: lower-roman;
-}
-
-ul li a {
-	font-size: 20px !important;
-}
 
 .markdown-body-preview-dark {
 		box-sizing: border-box;

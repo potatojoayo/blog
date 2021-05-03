@@ -91,16 +91,18 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				maxHeight='100px'
 				overflow='hidden'
 			>
-				<Text
-					fontSize={20}
-					fontWeight={FontWeight.light}
-					userSelect='text'
-					fontFamily={Font.post_sub_title}
-					color={theme.text}
-					margin='0 0 10px 0'
-				>
-					{post.subTitle}
-				</Text>
+				<Link to={`/post/${post._id}`} style={{textDecoration: 'none'}}>
+					<Text
+						fontSize={20}
+						fontWeight={FontWeight.light}
+						userSelect='text'
+						fontFamily={Font.post_sub_title}
+						color={theme.text}
+						margin='0 0 10px 0'
+					>
+						{post.subTitle}
+					</Text>
+				</Link>
 			</Container>
 			<Container display='flex' margin='-5px 0 0 -10px'>
 				{renderedTags}
