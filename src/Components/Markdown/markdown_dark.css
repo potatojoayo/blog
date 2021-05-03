@@ -19,9 +19,6 @@
 }
 
 
-#table-of-contents {
-	font-size: 2rem;
-}
 
 
 
@@ -34,8 +31,8 @@
 	}
 
 	@media (max-width: 767px) {
-		.markdown-body {
-			padding: 15px;
+		.markdown-body-dark {
+			padding: 0px;
 		}
 	}
 

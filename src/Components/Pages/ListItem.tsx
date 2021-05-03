@@ -8,6 +8,7 @@ import {Button, Container, Image, Text} from '../styled';
 import {Post} from '../../Model'
 import Font, {FontWeight} from '../../utill/Font'
 import TagListItem from './TagListItem';
+import {DISPLAY_SIZE} from '../../utill/media_query';
 
 interface ListItemProps {
 	post: Post
@@ -18,6 +19,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 	const themeState = useSelector((state: RootState) => state.themeState)
 	const theme = themeState.theme
 	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
+	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	const renderedTags = post.tags.map((tag, index) => {
 		return <Link to={`/tags/${tag}`} style={{textDecoration: 'none'}} key={index}>
 			<TagListItem name={tag} color={tagColors[index % 5]} />
@@ -32,6 +34,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 		}}
 	>
 		<Button
+			disableScale={displaySize === DISPLAY_SIZE.MOBILE ? true : false}
 		>
 			<Link to={`/post/${post._id}`}>
 				<Image
@@ -62,6 +65,7 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				alignItems='flex-end'
 			>
 				<Button
+					disableScale={displaySize === DISPLAY_SIZE.MOBILE ? true : false}
 					width='fit-content'
 				>
 					<Link to={`/post/${post._id}`} style={{textDecoration: 'none'}}>

@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 import {Container} from '../styled'
@@ -8,18 +8,7 @@ import WritePost from './WritePost'
 
 
 const Pages: React.FC = () => {
-	const element = useRef(HTMLDivElement.prototype)
-	useEffect(() => {
-		const wheelHandler: any = (e: WheelEvent) => {
-			const end = element.current.offsetHeight + 60 - window.innerHeight
-			if (window.scrollY >= end && e.deltaY > 0)
-				e.preventDefault()
-		}
-		window.addEventListener('mousewheel', wheelHandler);
-		return () => window.removeEventListener('mousewheel', wheelHandler);
-	}, [])
 	return <Container
-		ref={element}
 		width='100%'
 		display='flex'
 		flexDirection='column'

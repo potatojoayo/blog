@@ -17,6 +17,7 @@ const TagListItem: React.FC<TagListItemProps> = ({name, color, count}) => {
 		borderRadius='10px'
 		backgroundColor={color}
 		margin='5px 5px'
+		onClick={() => {window.scrollTo({top: 0})}}
 		padding='10px 10px'
 	>
 		<Tag tags={[name]} color={'#E0E0E0'} fontSize={displaySize === DISPLAY_SIZE.MOBILE ? 13 : 15} bottomLine={false} count={count} />

@@ -24,7 +24,7 @@ interface ButtonProps extends MediaQueryStyleProps {
 	position?: CSSObject['position']
 	alignSelf?: CSSObject['alignSelf'];
 	alignItems?: CSSObject['alignItems']
-
+	disableScale?: boolean;
 }
 
 const Button = styled.div(
@@ -51,6 +51,9 @@ const Button = styled.div(
 		fontFamily: props.fontFamily,
 		fontSize: props.fontSize,
 		justifySelf: props.justifySelf,
+		'&:active': {
+			transform: props.disableScale ? 'scale(1)' : 'scale(.98)'
+		},
 		justifyContent: props.justifyContent,
 		display: props.display,
 		flexDirection: props.flexDirection,
