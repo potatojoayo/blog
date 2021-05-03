@@ -26,6 +26,7 @@ const SideMenu: React.FC = () => {
 		<Container
 			minWidth={isOpen ? '230px' : '0px'}
 			width={isOpen ? '230px' : '0px'}
+			className='side-menu'
 			userSelect='none'
 			backgroundColor={theme.mildBackground}
 			position='fixed'

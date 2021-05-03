@@ -23,6 +23,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({title, subTitle}) => {
 	const theme = themeState.theme;
 
 	return <Container
+		className='page-layout'
 		width='100%'
 		display='flex'
 		justifyContent='center'

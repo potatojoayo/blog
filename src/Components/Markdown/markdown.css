@@ -26,7 +26,7 @@ p, li, tr, th {
 	color: grey !important;
 	font-family: 'Cookie';
 	border-radius: 5px;
-	font-size: 15px !important;
+	font-size: 14px !important;
 	background-color: #457b9d!;
 	font-weight: bold;
 	transition: all ease .15s;
@@ -45,9 +45,13 @@ p, li, tr, th {
 	transition: left linear .2s;
 }
 
+.toc.hide{
+	display:none;
+}
+
 .toc.side-open {
 	position: fixed;
-	left: -10px;
+	left: -20px;
 	top: 80px;
 }
 

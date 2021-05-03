@@ -38,7 +38,6 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 	const isDark = useSelector((state: RootState) => state.themeState).isDark
 	const isSideOpen = useSelector((state: RootState) => state.sideMenuState).isSideMenuOpen
 
-
 	const CodeBlock = (props: any) => {
 		const language: string = props.node.properties.className + ''
 		const lang = language.split('-')
@@ -54,8 +53,19 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 			<img src={props.src} alt={props.alt} width='100%' />
 		)
 	}
+	const pageLayout = document.querySelector('.page-layout')
+	const tableOfContent = document.querySelector('.toc')
+	tableOfContent?.classList.toggle('side-open', !isSideOpen)
+	useEffect(() => {
+		setTimeout(() => {
+			console.log(pageLayout?.clientWidth)
+			tableOfContent?.classList.remove('hide')
+			if (pageLayout?.clientWidth! < 1430) {
+				tableOfContent?.classList.add('hide')
+			}
+		}, 200)
+	}, [isSideOpen, pageLayout?.clientWidth, tableOfContent])
 
-	document.querySelector('.toc')?.classList.toggle('side-open', !isSideOpen)
 	useEffect(() => {
 		const tocItems = document.querySelectorAll('.toc-item a')
 		let headers: HTMLHeadElement[] = [];
@@ -78,6 +88,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 		}
 		window.addEventListener('scroll', scrollHandler)
 		return () => window.removeEventListener('scroll', scrollHandler)
+
 	}, [])
 
 	return (

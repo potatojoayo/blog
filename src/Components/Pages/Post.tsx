@@ -14,7 +14,6 @@ import dateFormat from 'dateformat'
 
 const Post: React.FC = () => {
 	const {postId} = useParams<Parameter>()
-	console.log('post page')
 	const post: post = useSelector((state: RootState) => state.postState).post[+postId - 1]
 	const theme = useSelector((state: RootState) => state.themeState).theme
 	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
