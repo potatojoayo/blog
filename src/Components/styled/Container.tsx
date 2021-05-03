@@ -41,6 +41,7 @@ interface ContainerProps {
 	mobile?: CSSObject;
 	desktop?: CSSObject;
 	tablet?: CSSObject;
+	willChange?: CSSObject['willChange'];
 }
 
 const Container = styled.div({
@@ -85,6 +86,7 @@ const Container = styled.div({
 	right: props.right,
 	alignSelf: props.alignSelf,
 	userSelect: props.userSelect,
+	willChange: props.willChange,
 })
 )
 

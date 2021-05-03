@@ -30,8 +30,9 @@ const SideMenu: React.FC = () => {
 			userSelect='none'
 			backgroundColor={theme.mildBackground}
 			position='fixed'
-			height='110vh'
-			transition='width linear .2s, background-color ease .2s, min-width linear .2s'
+			willChange='width, min-width'
+			height='100%'
+			transition='width linear .2s, min-width linear .2s'
 			boxShadow={`5px 3px 5px rgba(0,0,0,0.3)`}
 			zIndex={6}
 			display='flex'
@@ -46,14 +47,10 @@ const SideMenu: React.FC = () => {
 			mobile={{
 				position: 'fixed',
 				height: '100%',
-				backgroundColor: `${isNotifierOpen ? isDark ? 'rgba(60,60,60,1)'
-					: 'rgb(120,120,120)'
-					: theme.mildBackground
-					}`
 			}}
 			alignItems='center'
 			padding='10px 0'
-			overflow='hidden'
+			overflow='scroll'
 		>
 			<Button
 				position='absolute'
@@ -250,7 +247,7 @@ const SideMenu: React.FC = () => {
 			</Link>
 			<Container
 				position='absolute'
-				bottom={windowSize === DISPLAY_SIZE.MOBILE ? '20px' : '130px'}
+				bottom='20px'
 				flexWrap='nowrap'
 				width='95%'
 			>
