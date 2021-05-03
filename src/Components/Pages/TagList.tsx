@@ -10,16 +10,24 @@ const TagList: React.FC = () => {
 	const posts = useSelector((state: RootState) => state.postState).post
 	const theme = useSelector((state: RootState) => state.themeState).theme
 	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
-	const tags: string[] = []
+	let tags: string[] = []
 	posts.forEach((post) => {
 		post.tags.forEach((tag) => {
-			if (tags.includes(tag) === false)
-				tags.push(tag)
+			tags.push(tag)
 		})
 	})
-	const renderedTags = tags.map((tag, index) => {
-		return <Link to={`/tags/${tag}`} style={{textDecoration: 'none'}} key={index}>
-			<TagListItem name={tag} color={tagColors[index % 5]} />
+	const tagWithCountWithDuplicate = tags.map((tag) => {
+		const duplicateCount = tags.filter((t) => t === tag).length
+		tags = tags.filter((t) => t !== tag)
+		return {
+			name: tag,
+			count: duplicateCount
+		}
+	})
+	const tagWithCount = tagWithCountWithDuplicate.filter((t) => t.count > 0)
+	const renderedTags = tagWithCount.map((tag, index) => {
+		return <Link to={`/tags/${tag.name}`} style={{textDecoration: 'none'}} key={index}>
+			<TagListItem name={tag.name} color={tagColors[index % 5]} count={tag.count} />
 		</Link>
 	})
 	return <Container

@@ -9,9 +9,10 @@ interface TagProps {
 	color: string;
 	fontSize: number;
 	bottomLine: boolean;
+	count?: number;
 }
 
-const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine}) => {
+const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine, count}) => {
 	const Tags = tags.map((item) => {
 		return <Container
 			key={item}
@@ -26,7 +27,7 @@ const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine}) => {
 				bottomLineColor={bottomLine ? color : ''}
 				fontSize={fontSize}
 			>
-				#{item}
+				#{item} {count ? `(${count})` : ''}
 			</Text>
 		</Container>
 	})
@@ -42,6 +43,7 @@ const Tag: React.FC<TagProps> = ({tags, color, fontSize, bottomLine}) => {
 			margin='0 10px 0 0'
 		/>
 		{Tags}
+
 	</Container>
 }
 

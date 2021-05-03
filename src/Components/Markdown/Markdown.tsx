@@ -68,7 +68,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 		tocItems.item(0)?.classList.add('on')
 		const scrollHandler = () => {
 			headers.forEach((header, index) => {
-				if (header.offsetTop - window.scrollY <= 0) {
+				if (header?.offsetTop - window.scrollY <= 0) {
 					for (let i = 0; i < tocItems.length; i++) {
 						tocItems.item(i).classList.remove('on')
 					}

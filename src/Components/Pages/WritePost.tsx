@@ -111,7 +111,7 @@ const WritePost: React.FC = () => {
 						})
 					}}
 				>
-					<option value={Category.frontEnd}>{Category.frontEnd}</option>
+					<option selected value={Category.frontEnd}>{Category.frontEnd}</option>
 					<option value={Category.backEnd}>{Category.backEnd}</option>
 					<option value={Category.algorithm}>{Category.algorithm}</option>
 					<option value={Category.article}>{Category.article}</option>
