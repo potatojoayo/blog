@@ -9,12 +9,13 @@ interface TextAreaProps {
 }
 
 const TextArea = styled.textarea({
-	width: '40vw',
+	width: '30vw',
 	height: '40vh',
 	border: 'none',
 	outline: 'none',
 	overflow: 'auto',
 	margin: '20px 0 0 50px',
+	fontSize: '30px',
 	borderRadius: '10px',
 	padding: '10px 20px',
 }, (props: TextAreaProps) => ({

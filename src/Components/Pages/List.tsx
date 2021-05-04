@@ -112,6 +112,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 							color={theme.text}
 							fontFamily={Font.menu}
 							cursor='default'
+							margin='0 10px 0 0'
 							userSelect='none'
 						>{'page: ' + currentPage}</Text>
 						: <div />
