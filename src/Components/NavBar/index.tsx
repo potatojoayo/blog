@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {changeTheme} from '../../store/theme/action'
@@ -6,7 +6,7 @@ import {RootState} from '../../store'
 import {Container, Icon, Button, Text, Image} from '../styled'
 import Colors from '../../utill/Colors'
 import Font, {FontWeight} from '../../utill/Font'
-import {at, github} from '../../assets'
+import {at, github, profile} from '../../assets'
 import {toggleNotifier} from '../../store/notifier/action'
 import {toggleSideMenu} from '../../store/sideMenu/action'
 import {DISPLAY_SIZE} from '../../utill/media_query'
@@ -20,6 +20,7 @@ const NavBar: React.FC = () => {
 	const theme = themeState.theme;
 	const isDark = themeState.isDark;
 	const windowSize = useSelector((state: RootState) => state.windowSizeState).displaySize
+	const [isHover, setIsHover] = useState(false)
 
 	return (
 		<Container
@@ -88,21 +89,35 @@ const NavBar: React.FC = () => {
 						</Link>
 
 					</Button>
-					<Text
-						fontFamily={Font.headline_normal}
-						margin='6px 0 0 10px'
-						cursor='default'
-						letterSpacing='.5px'
-						color={theme.text}
-						fontSize='15px'
-						fontWeight={FontWeight.regular}
-						bottomLineColor={theme.text}
-						mobile={{
-							margin: '-5px 0 0 10px'
-						}}
-					>
-						HYOBEOM HAN
-			</Text>
+					<Container position='relative'>
+						<Text
+							fontFamily={Font.headline_normal}
+							margin='6px 0 0 10px'
+							cursor='default'
+							letterSpacing='.5px'
+							color={theme.text}
+							fontSize='15px'
+							fontWeight={FontWeight.regular}
+							onMouseEnter={() => setIsHover(true)}
+							onMouseLeave={() => setIsHover(false)}
+							bottomLineColor={theme.text}
+							mobile={{
+								margin: '-5px 0 0 10px'
+							}}
+						>
+							HYOBEOM HAN
+					<Image width='90px'
+								height='90px'
+								opacity={isHover ? 1 : 0}
+								backgroundImage={'url(' + profile + ')'}
+								borderRadius='100%'
+								position='absolute'
+								top={-15}
+								transition='opacity ease .2s'
+								left={125}
+							/>
+						</Text>
+					</Container>
 				</Container>
 			</Container>
 			<Container

@@ -1,5 +1,6 @@
 import potato from './image/potato_main.png'
 import github from './image/github.png'
+import profile from './image/profile.png'
 import at from './image/at.png'
 import linkedIn from './image/linked_in.png'
 
@@ -19,6 +20,7 @@ export {
 	potato,
 	github,
 	at,
+	profile,
 	avatar,
 	i_frontend,
 	i_backend,

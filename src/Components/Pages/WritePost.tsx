@@ -16,7 +16,7 @@ const WritePost: React.FC = () => {
 	const postState = useSelector((state: RootState) => state.postState)
 	useEffect(() => {
 		if (postId) {
-			const p = postState.post[+postId - 1]
+			const p = postState.post.find((post) => post._id === +postId)!
 			setPost(p)
 		}
 	}, [postId, postState])

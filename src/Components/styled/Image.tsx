@@ -19,6 +19,7 @@ interface ImageProps {
 	desktop?: CSSObject;
 	tablet?: CSSObject;
 	backgroundSize?: string;
+	borderRadius?: CSSObject['borderRadius'];
 	backgroundPosition?: string;
 	backgroundRepeat?: string;
 	display?: string;
@@ -61,6 +62,7 @@ const Image = styled.div(
 		[mediaquery[DISPLAY_SIZE.DESKTOP]]: props.desktop,
 		transform: props.transform,
 		filter: props.filter,
+		borderRadius: props.borderRadius,
 	})
 );
 export default Image;
