@@ -29,6 +29,11 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 	const pageLayout = document.querySelector('.page-layout')
 	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 
+	const Strong = (props: any) => {
+		const content = props.children.reduce((a: string, b: string) => a + ' ' + b)
+		return <strong>{' ' + content + ' '}</strong>
+	}
+
 	useEffect(() => {
 		const tableOfContent = document.querySelector('.toc')
 		tableOfContent?.classList.toggle('side-close', isSideOpen)
@@ -78,6 +83,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 			rehypePlugins={[slug, toc,]}
 			components={
 				{
+					strong: Strong,
 					a: MarkdownLinkRenderer,
 					code: CodeBlock(isDark),
 					pre: Container,

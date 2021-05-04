@@ -66,6 +66,9 @@ const Pages: React.FC = () => {
 			<Route path='/write'>
 				<WritePost />
 			</Route>
+			<Route path='/update/:postId'>
+				<WritePost />
+			</Route>
 		</Switch>
 	</Container>
 }

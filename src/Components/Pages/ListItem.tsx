@@ -72,11 +72,12 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 						<Text
 							fontSize={33}
 							whiteSpace='nowrap'
+							mobile={{fontSize: 25}}
 							cursor='pointer'
 							fontFamily={Font.post_title}
 							color={theme.text}
 							fontWeight={FontWeight.medium}
-							margin='0 0 5px 0'
+							margin='0 0 0px 0'
 						>
 							{post.title}
 						</Text>
@@ -84,9 +85,10 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 				</Button>
 				<Text
 					color={theme.icon}
-					margin='0 0 13px 15px'
+					margin='0 0 1px 10px'
 					userSelect='none'
 					cursor='default'
+					mobile={{fontSize: 12}}
 					fontSize={15}
 					display='inline-block'
 				> {'no.' + post._id} </Text>
@@ -100,9 +102,10 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 						fontSize={20}
 						fontWeight={FontWeight.light}
 						userSelect='text'
+						mobile={{fontSize: 15}}
 						fontFamily={Font.post_sub_title}
 						color={theme.text}
-						margin='0 0 10px 0'
+						margin='10px 0 10px 0'
 					>
 						{post.subTitle}
 					</Text>

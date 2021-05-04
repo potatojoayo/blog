@@ -11,6 +11,7 @@ import Font, {FontWeight} from '../../utill/Font'
 import {ThemeType} from '../../utill/Theme'
 import {Post} from '../../Model'
 import TagListItem from './TagListItem'
+import {DISPLAY_SIZE} from '../../utill/media_query'
 
 
 interface ListProps {
@@ -26,6 +27,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 	const {category, tag} = useParams<Parameter>()
 	const useQuery = () => new URLSearchParams(useLocation().search)
 	const query = useQuery()
+	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
 	const posts = useSelector((state: RootState) => state.postState).post
 	if (!tag) {
@@ -54,7 +56,8 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 			<Container
 				display='flex'
 				justifyContent='space-between'
-				width='100%'
+				width='100vw'
+				flexWrap='wrap'
 			>
 				<Container
 					display='flex'
@@ -64,7 +67,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 						<TagListItem
 							name={tag}
 							color={tagColors[Math.floor(Math.random() * 4)]}
-							fontSize={25}
+							fontSize={displaySize === DISPLAY_SIZE.MOBILE ? 15 : 25}
 							margin='0 0 5px -5px' />
 						:
 						<Button>
@@ -117,7 +120,7 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 						color={theme.text}
 						cursor='default'
 						fontFamily={Font.menu}
-						margin='0 0 0 10px'
+						margin='0 0 0 0px'
 						userSelect='none'
 					>{'total posts: ' + items.length}</Text>
 				</Container>
