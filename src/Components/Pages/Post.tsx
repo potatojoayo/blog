@@ -15,7 +15,7 @@ import {DISPLAY_SIZE} from '../../utill/media_query'
 
 const Post: React.FC = () => {
 	const {postId} = useParams<Parameter>()
-	const post: post = useSelector((state: RootState) => state.postState).post[+postId - 1]
+	const post: post = useSelector((state: RootState) => state.postState).post.find((post) => post._id === +postId)!
 	const theme = useSelector((state: RootState) => state.themeState).theme
 	const displaySize = useSelector((state: RootState) => state.windowSizeState).displaySize
 	const tagColors = useSelector((state: RootState) => state.themeState).theme.tagList
