@@ -15,7 +15,6 @@ const postReducer = (state: PostState = initalState, action: PostAction): PostSt
 	switch (action.type) {
 		case POST_ACTION_TYPE.PUSH_POST:
 			return {
-				...state,
 				post: action.payload.post
 			}
 		default:
