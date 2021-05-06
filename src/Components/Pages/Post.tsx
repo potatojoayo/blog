@@ -2,7 +2,7 @@ import React from 'react'
 import {useSelector} from 'react-redux'
 import {Link, useParams} from 'react-router-dom'
 
-
+import Comment from './Comment'
 import {RootState} from '../../store'
 import Markdown from '../Markdown/Markdown'
 import {Container, Image, Text} from '../styled'
@@ -54,6 +54,7 @@ const Post: React.FC = () => {
 			{renderedTags}
 		</Container>
 		<Markdown value={post.content} />
+		<Comment />
 	</Container>
 }
 
