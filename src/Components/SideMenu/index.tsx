@@ -24,7 +24,6 @@ import {
 import MenuItem from "./MenuItem";
 import SubItem from "./SubItem";
 import { DISPLAY_SIZE } from "../../utill/media_query";
-import Font from "../../utill/Font";
 
 const SideMenu: React.FC = () => {
   const isOpen = useSelector(
@@ -94,11 +93,11 @@ const SideMenu: React.FC = () => {
       />
       <Container
         display="none"
-        margin="10px 0 0 0"
         mobile={{
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "center",
+          margin: "10px 0 0 0",
         }}
       >
         <Button
@@ -163,33 +162,6 @@ const SideMenu: React.FC = () => {
             filter={isDark ? "invert(100%)" : ""}
           />
         </Button>
-      </Container>
-      <Container
-        minWidth="190px"
-        maxWidth="190px"
-        margin="30px 0 0 0"
-        fontFamily="Do Hyeon"
-        fontSize={15}
-        mobile={{
-          fontSize: 14,
-          margin: "23px 0 0 0",
-          display: "none",
-        }}
-      >
-        <Text
-          margin="-14px 0 0 0"
-          textAlign="center"
-          fontFamily={Font.introduce}
-          color={theme.text}
-          cursor="default"
-        ></Text>
-        <Text
-          margin="-3px 0 0 0"
-          textAlign="center"
-          fontFamily={Font.introduce}
-          color={theme.text}
-          cursor="default"
-        ></Text>
       </Container>
       <Container
         margin="10px 0 20px 0"

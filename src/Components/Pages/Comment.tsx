@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { createRef, useLayoutEffect } from "react";
 
-const Comment: React.FC = () => {
-	return <section ref={(element) => {
-		if (!element) {
-			return;
-		}
-		const scriptElem = document.createElement("script");
-		scriptElem.src = "https://utteranc.es/client.js";
-		scriptElem.async = true;
-		scriptElem.crossOrigin = "anonymous";
-		scriptElem.setAttribute("repo", "potatojoayo/blog_comment");
-		scriptElem.setAttribute("issue-term", "url");
-		scriptElem.setAttribute("label", "blog-comment");
-		scriptElem.setAttribute("theme", "boxy-light");
-		element.appendChild(scriptElem);
-	}}></section>
+const src = "https://utteranc.es/client.js";
 
+export interface IUtterancesProps {
+  repo: string;
+  theme: string;
 }
 
-export default Comment;
+const Utterances: React.FC<IUtterancesProps> = React.memo(({ repo, theme }) => {
+  const containerRef = createRef<HTMLDivElement>();
+
+  useLayoutEffect(() => {
+    const utterances = document.createElement("script");
+
+    const attributes = {
+      src,
+      repo,
+      theme,
+      "issue-term": "pathname",
+      label: "✨💬 comments ✨",
+      crossOrigin: "anonymous",
+      async: "true",
+    };
+
+    Object.entries(attributes).forEach(([key, value]) => {
+      utterances.setAttribute(key, value);
+    });
+
+    containerRef.current!.appendChild(utterances);
+  }, [repo]);
+
+  return <div ref={containerRef} />;
+});
+
+Utterances.displayName = "Utterances";
+
+export default Utterances;
