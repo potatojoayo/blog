@@ -40,7 +40,7 @@ const Markdown: React.FC<MarkdownProp> = ({value, className}) => {
 
 		if (displaySize !== DISPLAY_SIZE.MOBILE)
 			setTimeout(() => {
-				if (pageLayout?.clientWidth! < 1430) {
+				if (pageLayout?.clientWidth! < 1600) {
 					tableOfContent?.classList.remove('open')
 				}
 				else

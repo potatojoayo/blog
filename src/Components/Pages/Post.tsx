@@ -60,9 +60,8 @@ const Post: React.FC = () => {
       <Container display="flex" justifyContent="center" flexWrap="wrap">
         {renderedTags}
       </Container>
-      <Markdown value={post.content} />
-
-      <Comment repo="potatojoayo/blog" theme="github-light" />
+      <Markdown value={post.content} /> 
+      <Comment repo="potatojoayo/blog" theme={theme.isDark?"gruvbox-dark":"boxy-light"} />
     </Container>
   );
 };

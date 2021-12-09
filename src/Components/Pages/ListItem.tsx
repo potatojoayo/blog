@@ -36,7 +36,9 @@ const ListItem: React.FC<ListItemProps> = ({post, isVisible}) => {
 		<Button
 			disableScale={displaySize === DISPLAY_SIZE.MOBILE ? true : false}
 		>
-			<Link to={`/post/${post._id}`}>
+			<Link to={`/post/${post._id}`}
+				onClick={() => {window.scrollTo({top: 0})}}
+			>
 				<Image
 					width='300px'
 					cursor='pointer'

@@ -36,7 +36,7 @@ const PageIndex: React.FC<PageIndexProp> = ({items, theme}) => {
 				<Link to={match.url + '?page=' + i} style={{textDecoration: 'none'}}
 				>
 					<Text
-						onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+						onClick={() => window.scrollTo({top: 0})}
 						cursor='pointer'
 						fontFamily='Ubuntu'
 						fontSize={17}

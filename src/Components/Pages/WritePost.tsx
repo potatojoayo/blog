@@ -42,7 +42,8 @@ const WritePost: React.FC = () => {
 						e.preventDefault()
 						setPost({
 							...post,
-							title: e.target.value
+							title: e.target.value,
+							secret: false
 						})
 					}}
 				/>

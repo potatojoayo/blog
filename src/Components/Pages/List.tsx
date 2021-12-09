@@ -39,9 +39,13 @@ const List: React.FC<ListProps> = ({title, subTitle, theme}) => {
 				return items.push(post)
 		})
 	}
-	const renderedItems = items.map((post, index) => {
+	const renderedItems = !tag?items.map((post, index) => {
 		return <ListItem post={post} key={index} isVisible={true} />
-	})
+		}).slice(5*(currentPage-1),5*(currentPage))
+			:
+			items.map((post,index)=>{
+			return <ListItem post={post} key={index} isVisible={true} />
+		})
 	return <Container
 		ref={listElement}
 		width='100%'
