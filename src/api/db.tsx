@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const db = axios.create({
-	baseURL: 'https://potatojoayo.com/db/',
+	baseURL: 'https://api.potatojoayo.com/',
 	timeout: 30000
 })
 
