@@ -1,6 +1,7 @@
 
 # BLOG
 개발자로서 공부한 내용과 작업물 등을 포스팅 하기 위한 개인 블로그입니다.  
+https://potatojoayo.com
 
 <img src=https://user-images.githubusercontent.com/75382494/147380544-780d5334-0310-4cd9-9cd9-a59eb4e138c2.png width=300 height=200 align='right'>
     
