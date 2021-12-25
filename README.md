@@ -1,7 +1,4 @@
 
-# My Personal Blog
+# Blog: potatojoayo
 
-
-# TODO:
-
-> Table of contnet size manipulating
+개발자로서 공부한 내용과 작업물 등을 포스팅 하기 위한 개인 블로그입니다.
